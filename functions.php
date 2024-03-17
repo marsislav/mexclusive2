@@ -6,6 +6,8 @@
  * @package mExclusive2
  */
 require_once('functions/dynamic-meta.php');
+require_once ('functions/class-wp-bootstrap-navwalker.php');
+
   function mexclusive2_scripts(){
       wp_register_style( 'bootstrap', get_template_directory_uri().'/assets/css/bootstrap.min.css');
       wp_enqueue_style( 'bootstrap' );
@@ -64,6 +66,11 @@ function mexclusive2_config()
 }
 
 add_action('after_setup_theme', 'mexclusive2_config',0);
+
+//WooCommerce
+if (class_exists('WooCommerce')){
+add_action ('woocommerce_after_shop_loop_item_title','the_excerpt', 1);
+}
 
 
 

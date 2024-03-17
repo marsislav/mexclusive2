@@ -56,6 +56,13 @@ display:inline;
 
 }
 
+/**TEST*/
+.main-menu .dropdown:hover>.dropdown-menu,
+.main-menu .dropup:hover>.dropdown-menu {
+    display: block;
+}
+/*test*/
+
 /*Woocommerce*/
 
 .size-auto,
