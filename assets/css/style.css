@@ -1,3 +1,68 @@
-* {
-    background: red!important;
+/*Loader Animation*/
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* semi-transparent white background */
+    z-index: 1000; /* ensure it's on top of other content */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    opacity: 1; /* Initially visible */
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Spin animation */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.content {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+.loaded .loader-wrapper {
+    opacity: 0; /* Hide loader when content is loaded */
+    pointer-events: none; /* Disable pointer events to allow interaction with content */
+}
+
+.loaded .content {
+    opacity: 1; /* Show content when loaded */
+}
+
+/*Main menu*/
+.main-menu ul li, .footer_menu ul li {
+display:inline;
+    margin:0 5px 0 0;
+}
+.main-menu ul, .footer-menu ul {
+    margin: 0;
+    padding:0;
+    font-size:18px;
+    font-weight:500;
+    border-radius:0;
+
+}
+
+/*Woocommerce*/
+
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+    max-width: 100%;
+    height:auto;
 }
