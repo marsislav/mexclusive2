@@ -28,7 +28,11 @@
     </div>
     <section>
         <div class="container">
-            <div class="row">Footer Copyright</div>
+            <div class="row">
+                <p>
+                    <?php echo get_theme_mod('set_copyright', 'Copyright - X. All rights reserved.');?>
+                </p>
+            </div>
         </div>
     </section>
 </footer>

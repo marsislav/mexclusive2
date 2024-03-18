@@ -56,12 +56,11 @@ display:inline;
 
 }
 
-/**TEST*/
 .main-menu .dropdown:hover>.dropdown-menu,
 .main-menu .dropup:hover>.dropdown-menu {
     display: block;
 }
-/*test*/
+
 
 /*Woocommerce*/
 
@@ -72,4 +71,23 @@ display:inline;
 .size-thumbnail {
     max-width: 100%;
     height:auto;
+}
+.cart i {
+    font-size: 30px;
+}
+.items {
+    background: red;
+    width:20px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+    font-size:15px;
+    color:#fff;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.custom-logo-link img {
+    max-width: 180px;
+    height: auto;
 }
