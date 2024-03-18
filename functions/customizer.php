@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
 *Theme customizer
  * @package mexclusive2
@@ -255,6 +255,163 @@ function mexclusive2_customizer($wp_customize) {
 		)
 	);
 
+	/*Home and blog settings*/
+
+	$wp_customize->add_section(
+		'sec_home_page', array (
+			'title' => 'Home page products and blog settings',
+			'description' => 'Settings for homepage and blog',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'set_popular_max_num',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'absint',
+
+		)
+	);
+
+	$wp_customize->add_control(
+		'set_popular_max_num',
+		array (
+			'label' => 'Popular products max number',
+			'description' => 'Set maximum number of popular products',
+			'section' => 'sec_home_page',
+			'type' => 'number',
+
+		)
+	);
+
+	/*Popular products max col*/
+
+	$wp_customize->add_setting(
+		'set_popular_max_col',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'absint',
+
+		)
+	);
+
+	$wp_customize->add_control(
+		'set_popular_max_col',
+		array (
+			'label' => 'Popular products max columns',
+			'description' => 'Set maximum columns of popular products',
+			'section' => 'sec_home_page',
+			'type' => 'number',
+
+		)
+	);
+
+	/*New products*/
+
+	$wp_customize->add_setting(
+		'set_new_arrivals_max_num',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'absint',
+
+		)
+	);
+
+	$wp_customize->add_control(
+		'set_new_arrivals_max_num',
+		array (
+			'label' => 'New products max number',
+			'description' => 'Set maximum number of new products',
+			'section' => 'sec_home_page',
+			'type' => 'number',
+
+		)
+	);
+
+	$wp_customize->add_setting(
+		'set_new_arrivals_max_col',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'absint',
+
+		)
+	);
+
+	$wp_customize->add_control(
+		'set_new_arrivals_max_col',
+		array (
+			'label' => 'New products max columns',
+			'description' => 'Set maximum columns of new products',
+			'section' => 'sec_home_page',
+			'type' => 'number',
+
+		)
+	);
+
+	//Deal of the week product
+
+	// Deal of the week - is it active?
+
+	$wp_customize->add_setting(
+		'set_deal_show',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'mexclusive2_sanitize_checkbox',
+
+		)
+	);
+
+
+
+
+	$wp_customize->add_control(
+		'set_deal_show',
+		array (
+			'label' => 'Show deal of the week?',
+
+			'section' => 'sec_home_page',
+			'type' => 'checkbox',
+
+		)
+	);
+
+
+	//if is active do this....
+
+	$wp_customize->add_setting(
+		'set_deal',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'absint',
+
+		)
+	);
+
+
+
+
+	$wp_customize->add_control(
+		'set_deal',
+		array (
+			'label' => 'Deal of the week product ID',
+			'description' => 'Set product ID for the deal of the week',
+			'section' => 'sec_home_page',
+			'type' => 'number',
+
+		)
+	);
+
+
 
 }
 add_action('customize_register', 'mexclusive2_customizer');
+
+function mexclusive2_sanitize_checkbox ($checked) {
+return((isset ($checked) && true==$checked) ? true : false);
+}

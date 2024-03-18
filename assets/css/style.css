@@ -13,6 +13,9 @@
     transition: opacity 0.5s ease; /* Smooth transition for opacity */
     opacity: 1; /* Initially visible */
 }
+.home .woocommerce-loop-product__title +p {
+    display:none;
+}
 
 .loader {
     border: 8px solid #f3f3f3; /* Light grey */
