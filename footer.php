@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The template for displaying the footer
  *
@@ -13,16 +12,16 @@
 <footer>
     <section>
         <div class="container">
-            <div class="row">Footer widgets</div>
+            <div class="row"><?php _e('Footer widgets', 'mexclusive2'); ?></div>
         </div>
     </section>
     <div class="container">
         <div class="row">
             <nav class="footer-menu">
-                <?php wp_nav_menu(
-                    array(
-                        'theme_location' => 'footer_menu'
-                    )); ?>
+				<?php wp_nav_menu(
+					array(
+						'theme_location' => 'footer_menu'
+					)); ?>
             </nav>
         </div>
     </div>
@@ -30,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <p>
-                    <?php echo get_theme_mod('set_copyright', 'Copyright - X. All rights reserved.');?>
+					<?php echo esc_html(get_theme_mod('set_copyright', __('Copyright - X. All rights reserved.', 'mexclusive2'))); ?>
                 </p>
             </div>
         </div>

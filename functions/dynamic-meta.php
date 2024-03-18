@@ -24,7 +24,7 @@ function custom_meta_tags() {
     } else {
         // For other pages, you can provide default keywords and description
         $keywords = 'Esclusive, WordPress, Theme, Responsive, Blog';
-        $description = 'Wordpress theme for news agency ot just for personal blog';
+        $description = 'Wordpress theme for news agency or just for personal blog';
     }
 
     // Output meta tags
