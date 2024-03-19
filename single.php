@@ -20,7 +20,7 @@ get_header(); ?>
                     <div class="col">
                         <ol class="breadcrumb justify-content-start mb-4">
                             <li class="breadcrumb-item"><a
-                                        href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php _e( 'Home', 'mexclusive' ); ?></a>
+                                        href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php _e( 'Home', 'mexclusive2' ); ?></a>
                             </li>
 							<?php
 							$categories = get_the_category();
@@ -36,7 +36,7 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-            <section class="blog">
+            <section id="post-<?php the_ID(); ?>" <?php post_class('blog'); ?>>
                 <div class="container">
                     <div class="row">
                         <div class="col-9">
@@ -57,7 +57,7 @@ get_header(); ?>
                                         </div>
                                         <div class="d-flex justify-content-between post-info mb-5">
                                             <i class="fa fa-clock"></i> <?php display_reading_time();?>
-		                                    <?php mexclusive_postedOn(); ?>
+		                                    <?php mexclusive2_postedOn(); ?>
                                             <i class="fa fa-eye"></i>
 		                                    <?php
 		                                    $views = mexclusive2_display_post_views();
@@ -72,7 +72,7 @@ get_header(); ?>
 					                                    '%s Comment',
 					                                    '%s Comments',
 					                                    get_comments_number(),
-					                                    'mexclusive'
+					                                    'mexclusive2'
 				                                    ),
 				                                    number_format_i18n(get_comments_number())
 			                                    );
@@ -83,6 +83,38 @@ get_header(); ?>
                                         <div>
                                             <?php the_content(); ?>
                                         </div>
+                                        <hr>
+	                                    <?php if (has_tag()) {?>
+                                            <div class="tab-class ">
+                                                <div class="d-flex justify-content-between border-bottom mb-4">
+                                                    <ul class="nav-pills d-inline-flex text-center">
+                                                        <li class="mb-3 ">
+                                                            <h5 class="mt-2 me-3 mb-0"><?php _e('Tags', 'mexclusive2') ?>:</h5>
+                                                        </li>
+					                                    <?php
+					                                    // Get tags for current post
+					                                    $tags = get_the_tags();
+					                                    if ($tags) {
+						                                    // Loop through each tag
+						                                    foreach ($tags as $tag) {?>
+                                                                <li class="nav-item mb-3">
+                                                                    <a class="d-flex py-2 bg-light rounded-pill me-2" href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
+                                                        <span class="text-dark" style="width: 100px;">
+                                                            <?php echo $tag->name; ?>
+                                                        </span>
+                                                                    </a>
+                                                                </li>
+						                                    <?php }
+					                                    } ?>
+                                                    </ul>
+                                                </div>
+                                            </div>
+	                                    <?php } ?>
+                                        <hr>
+	                                    <?php get_template_part('/template-parts/single/about-the-author'); ?>
+	                                    <?php get_template_part('/template-parts/single/navigation'); ?>
+	                                    <?php if (comments_open()) {comments_template();}?>
+
                                     </article>
 								<?php
 								endwhile;

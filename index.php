@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package mExclusive2
+ * @package mexclusive2
  */
 
 get_header(); ?>

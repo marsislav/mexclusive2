@@ -1,3 +1,58 @@
+/*Helpers*/
+
+.bypostauthor,
+.wp-caption-text,
+.gallery-caption {
+    font-style: italic;
+}
+.alignright {
+    float: right; /* Float the element to the right */
+    margin-left: 20px; /* Add some left margin for spacing */
+}
+
+.alignleft {
+    float: left; /* Float the element to the right */
+    margin-right: 20px; /* Add some left margin for spacing */
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
 /*Loader Animation*/
 .loader-wrapper {
     display: flex;
@@ -46,6 +101,13 @@
 }
 
 /*Latest from blog*/
+.latest-post {
+    background: #0b0b0b;
+}
+.small {
+    width:30px;
+    height:30px;
+}
 .scrolling-wrapper {
     overflow: hidden;
     width: 100%;
@@ -115,6 +177,12 @@ display:inline;
     height: auto;
 }
 
+.features {
+
+        width: 100%;
+        background: linear-gradient(rgba(26, 125, 255, 0.5), rgba(255, 255, 255, 0.3));
+
+}
 /*SEARCH*/
 
 #search {
@@ -178,9 +246,13 @@ display:inline;
     transform: translate(0px, 0px) scale(1, 1);
     opacity: 1;
 }
-form {
+form.search-form {
     position:absolute;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
+}
+
+.w-100 {
+    height: auto;
 }

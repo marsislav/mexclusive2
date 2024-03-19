@@ -1,8 +1,8 @@
-
+<div class="p-3 rounded border">
 				<?php if (is_active_sidebar('primary-sidebar')) {
 					dynamic_sidebar('primary-sidebar');
 				}?>
-				<h4 class="mb-4"><?php _e('Popular Categories', 'mexclusive');?></h4>
+				<h4 class="mb-4"><?php _e('Popular Categories', 'mexclusive2');?></h4>
 
 						<ul class="category-list">
 							<?php
@@ -17,10 +17,11 @@
 							?>
 						</ul>
 
-				<h4 class="my-4"><?php _e('Lastest news in this category', 'mexclusive');?></h4>
+				<h4 class="my-4"><?php _e('Lastest news in this category', 'mexclusive2');?></h4>
 
 						<?php  display_last_ten_posts_in_current_category();?>
 
-						<h4 class="mb-0"><?php _e('Trending Tags', 'mexclusive');?></h4>
+						<h4 class="mb-0"><?php _e('Trending Tags', 'mexclusive2');?></h4>
 
 					<?php display_popular_tags(); ?>
+</div>

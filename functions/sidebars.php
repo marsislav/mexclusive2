@@ -1,10 +1,10 @@
 <?php
 
-function mexclusive_sidebar_widgets() {
+function mexclusive2_sidebar_widgets() {
     register_sidebar( array(
         'id' => 'primary-sidebar',
-        'name' => esc_html__( 'Primary Sidebar', 'mexclusive' ),
-        'description' => esc_html__( 'This sidebar appears in the blog posts page.', 'mexclusive' ),
+        'name' => esc_html__( 'Primary Sidebar', 'mexclusive2' ),
+        'description' => esc_html__( 'This sidebar appears in the blog posts page.', 'mexclusive2' ),
         'before_widget' => '<section>',
         'after_widget' => '</section>',
         'before_title' => '<h5>',
@@ -12,10 +12,10 @@ function mexclusive_sidebar_widgets() {
     ) );
 }
 
-$footer_layout = sanitize_text_field(get_theme_mod('mexclusive_footer_layout', '3,3,3,3'));
+$footer_layout = sanitize_text_field(get_theme_mod('mexclusive2_footer_layout', '3,3,3,3'));
 $footer_layout = preg_replace('/\s+/', '', $footer_layout);
 $columns = explode(',', $footer_layout);
-$footer_bg = mexclusive2_sanitize_footer_bg(get_theme_mod( 'mexclusive_footer_bg', 'dark' ));
+$footer_bg = mexclusive2_sanitize_footer_bg(get_theme_mod( 'mexclusive2_footer_bg', 'dark' ));
 $widget_theme = '';
 if($footer_bg == 'light') {
     $widget_theme = 'c-footer-widget-dark';
@@ -26,8 +26,8 @@ if($footer_bg == 'light') {
 foreach ($columns as $i => $column) {
     register_sidebar( array(
         'id' => 'footer-sidebar-' . ($i + 1),
-        'name' => sprintf(esc_html__( 'Footer Widgets Column %s', 'mexclusive' ), $i +1),
-        'description' => esc_html__( 'Footer widgets', 'mexclusive' ),
+        'name' => sprintf(esc_html__( 'Footer Widgets Column %s', 'mexclusive2' ), $i +1),
+        'description' => esc_html__( 'Footer widgets', 'mexclusive2' ),
         'before_widget' => '<section id="%1$s" class="c-footer-widget ' . $widget_theme . ' %2$s">',
         'after_widget' => '</section>',
         'before_title' => '<h5>',
@@ -35,4 +35,4 @@ foreach ($columns as $i => $column) {
     ) );
 }
 
-add_action('widgets_init', 'mexclusive_sidebar_widgets');
+add_action('widgets_init', 'mexclusive2_sidebar_widgets');

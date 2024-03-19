@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying search form in mExclusive2
+ * Template for displaying search form in mexclusive2
  * @package mexclusive2
  */
 ?><?php /*

@@ -20,12 +20,12 @@ function display_reading_time() {
 
 	// Output reading time
 	if ($reading_time < 1) {
-		_e("~ >1 minute read", 'mexclusive');
+		_e("~ >1 minute read", 'mexclusive2');
 	} elseif ($reading_time === 1) {
-		_e("~ 1 minute read", 'mexclusive');
+		_e("~ 1 minute read", 'mexclusive2');
 	} else {
 		printf(
-			__("~ %d minutes read", 'mexclusive'),
+			__("~ %d minutes read", 'mexclusive2'),
 			$reading_time
 		);
 	}

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The header for our theme
  *
@@ -7,8 +6,80 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package exclusive2
+ * @package mexclusive2
  */
+?>
+
+<?php
+function display_last_post_in_random_categories() {
+	// Get random categories
+	$categories = get_categories(array(
+		'orderby' => 'rand',
+		'number' => 4
+	));
+
+	// Start the features section
+	$output = '<!-- Features Start -->
+    <div class="container-fluid features mb-2">
+        <div class="container py-5">
+            <div class="row g-4">';
+
+	// Loop through each random category
+	foreach ($categories as $category) {
+		// Define arguments for the query to get the last post in the category
+		$args = array(
+			'posts_per_page' => 1,
+			'post_type' => 'post',
+			'category__in' => array($category->term_id),
+			'orderby' => 'rand', // Order randomly
+		);
+
+		// Perform the query
+		$query = new WP_Query($args);
+
+		// Get total post count in the category
+		$category_post_count = $category->count;
+
+		// Check if there are any posts
+		if ($query->have_posts()) {
+			// Start the features item
+			$output .= '<div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="row g-4 align-items-center features-item">';
+
+			// Display category name and total post count
+			$output .= '<h6 class="text-uppercase mb-3"><span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white " style="top: 10%; right: -10px;">' . $category_post_count . '</span>' . $category->name . '</h6>';
+
+			// Display the last post title
+			while ($query->have_posts()) {
+				$query->the_post();
+				$output .= '
+                <div class="col-8">
+                    <div class="features-content d-flex flex-column">
+                        <a href="' . get_permalink() . '" class="h6">' . get_the_title() . '</a>
+                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>' . get_the_date() . '</small>
+                    </div>
+                </div>';
+			}
+
+			// End the features item
+			$output .= '</div></div>';
+
+			// Restore original post data
+			wp_reset_postdata();
+		} else {
+			$output .= sprintf(
+				esc_html__('No posts found in category %s', 'mexclusive2'),
+				$category->name
+			);
+		}
+	}
+
+	// Close the row and container
+	$output .= '</div></div></div><!-- Features End -->';
+
+	// Output the generated HTML
+	echo $output;
+}
 ?>
 
 <!doctype html>
@@ -20,23 +91,57 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php wp_body_open();?>
 <div id="page" class="site">
     <header>
-        <div class="latest-post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-1">col1</div>
-                    <div class="col-11">
-                        <div class="scrolling-wrapper">
-                            <div class="content">
-                                <img src="your-image-url.jpg" alt="Your Image"/>
-                                <p>Your text goes here</p>
+	    <?php
+	    // Get the latest post
+	    $latest_post = get_posts( array(
+		    'posts_per_page' => 1,
+		    'orderby'        => 'date',
+		    'order'          => 'DESC',
+	    ) );
+
+	    // Check if there's any post
+	    if ( $latest_post ) :
+		    // Loop through each post
+		    foreach ( $latest_post as $post ) :
+			    setup_postdata( $post );
+
+			    // Display the post title
+			    ?>
+                <div class="latest-post">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-1">
+                                <i class="fa-solid fa-cloud-bolt"></i>
+                            </div>
+                            <div class="col-11">
+                                <div class="scrolling-wrapper">
+                                    <div class="content d-flex align-items-center">
+									    <?php
+									    // Display the post thumbnail if available
+									    if ( has_post_thumbnail() ) :
+										    the_post_thumbnail( 'thumbnail', array( 'class' => 'me-3 img-fluid rounded-circle border border-3 border-primary me-2 small' ) ); // Adjust thumbnail size as needed
+									    endif;
+									    ?>
+                                        <p><?php the_title(); ?></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+		    <?php
+		    endforeach;
+
+		    // Restore global post data
+		    wp_reset_postdata();
+	    else :
+		    // If no posts found
+		    ?>
+            <p>No posts found.</p>
+	    <?php endif; ?>
         <section class="search">
             <div class="container">
                 <div class="row"><?php get_search_form(); ?></div>
@@ -64,15 +169,15 @@
 											<?php if ( is_user_logged_in() ) { ?>
                                                 <li>
                                                     <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-                                                       class="nav-link"><?php _e( 'My account', 'exclusive2' ); ?></a>
+                                                       class="nav-link"><?php _e( 'My account', 'mexclusive2' ); ?></a>
                                                 </li>
                                                 <li>
                                                     <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
-                                                       class="nav-link"><?php _e( 'Logout', 'exclusive2' ); ?></a></li>
+                                                       class="nav-link"><?php _e( 'Logout', 'mexclusive2' ); ?></a></li>
 											<?php } else { ?>
                                                 <li>
                                                     <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-                                                       class="nav-link"><?php _e( 'Login/Register', 'exclusive2' ); ?></a>
+                                                       class="nav-link"><?php _e( 'Login/Register', 'mexclusive2' ); ?></a>
                                                 </li>
 											<?php } ?>
                                         </ul>
@@ -91,7 +196,7 @@
                                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#bs-example-navbar-collapse-1"
                                             aria-controls="bs-example-navbar-collapse-1" aria-expanded="false"
-                                            aria-label="<?php esc_attr_e( 'Toggle navigation', 'exclusive2' ); ?>">
+                                            aria-label="<?php esc_attr_e( 'Toggle navigation', 'mexclusive2' ); ?>">
                                         <span class="navbar-toggler-icon"></span>
                                     </button>
 
@@ -121,7 +226,13 @@
             </div>
 
         </section>
-        <div class="loader-wrapper">
-            <div class="loader"></div>
-        </div>
     </header>
+</div>
+
+<section class="container-fluid features mb-2">
+	<?php display_last_post_in_random_categories(); ?>
+</section>
+
+<div class="loader-wrapper">
+    <div class="loader"></div>
+</div>

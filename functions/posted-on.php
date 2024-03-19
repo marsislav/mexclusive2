@@ -1,4 +1,4 @@
-<?php function mexclusive_postedOn() { ?>
+<?php function mexclusive2_postedOn() { ?>
     <i class="fa fa-calendar"></i>
 	<?php _e( 'Posted on', 'mexclusive2' ); ?> <a href="<?php esc_url( get_permalink() ); ?>"
                                                  class="text-dark link-hover me-3">

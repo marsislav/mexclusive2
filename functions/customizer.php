@@ -235,57 +235,60 @@ function mexclusive2_customizer($wp_customize) {
 
 	/*################## FOOTER SETTINGS ########################*/
 
-	$wp_customize->add_section('mexclusive_footer_options', array(
+	$wp_customize->add_section('mexclusive2_footer_options', array(
 		'title' => esc_html__( 'Footer Options', 'mexclusive2' ),
 		'description' => esc_html__( 'You can change footer options from here.', 'mexclusive2' )
 	));
 
-	$wp_customize->add_setting('mexclusive_site_info', array(
+	$wp_customize->add_setting('mexclusive2_site_info', array(
 		'default' => '',
 		'sanitize_callback' => 'wp_kses_post',
 		'transport' => 'postMessage'
 	));
 
-	$wp_customize->add_control('mexclusive_site_info', array(
+	$wp_customize->add_control('mexclusive2_site_info', array(
 		'type' => 'textarea',
 		'label' => esc_html__( 'Site Info', 'mexclusive2' ),
-		'section' => 'mexclusive_footer_options'
+		'section' => 'mexclusive2_footer_options'
 	));
 
-	$wp_customize->add_setting('mexclusive_footer_bg', array(
+	$wp_customize->add_setting('mexclusive2_footer_bg', array(
 		'default' => 'dark',
 		'transport' => 'postMessage',
 		'sanitize_callback' => 'sanitize_key'
 	));
 
-	$wp_customize->add_control('mexclusive_footer_bg', array(
+	$wp_customize->add_control('mexclusive2_footer_bg', array(
 		'type' => 'select',
 		'label' => esc_html__( 'Footer Background', 'mexclusive2' ),
 		'choices' => array(
 			'light' => esc_html__( 'Light', 'mexclusive2' ),
 			'dark' => esc_html__( 'Dark', 'mexclusive2' ),
 		),
-		'section' => 'mexclusive_footer_options'
+		'section' => 'mexclusive2_footer_options'
 	));
 
-	$wp_customize->add_setting('mexclusive_footer_layout', array(
+	$wp_customize->add_setting('mexclusive2_footer_layout', array(
 		'default' => '3,3,3,3',
 		'transport' => 'postMessage',
 		'sanitize_callback' => 'sanitize_text_field',
-		'validate_callback' => 'mexclusive_validate_footer_layout'
+		'validate_callback' => 'mexclusive2_validate_footer_layout'
 	));
 
-	$wp_customize->add_control('mexclusive_footer_layout', array(
+	$wp_customize->add_control('mexclusive2_footer_layout', array(
 		'type' => 'text',
 		'label' => esc_html__( 'Footer Layout', 'mexclusive2' ),
-		'section' => 'mexclusive_footer_options'
+		'section' => 'mexclusive2_footer_options'
 	));
+
+
+
 
 }
 
 add_action( 'customize_register', 'mexclusive2_customizer' );
 
-function mexclusive_validate_footer_layout( $validity, $value) {
+function mexclusive2_validate_footer_layout( $validity, $value) {
 	if(!preg_match('/^([1-9]|1[012])(,([1-9]|1[012]))*$/', $value)) {
 		$validity->add('invalid_footer_layout', esc_html__( 'Footer layout is invalid', 'mexclusive2' ));
 	}
@@ -295,3 +298,48 @@ function mexclusive_validate_footer_layout( $validity, $value) {
 function mexclusive2_sanitize_checkbox ($checked) {
 	return ((isset($checked) && true == $checked) ? true : false);
 }
+function mexclusive2_customize_register($wp_customize) {
+	// Add section for background settings
+	$wp_customize->add_section('background_settings', array(
+		'title' => __('Background Settings', 'mexclusive2'),
+		'priority' => 30,
+	));
+
+	// Add setting for linear gradient background start color
+	$wp_customize->add_setting('background_gradient_start_color', array(
+		'default' => '#1b7dff', // Default color
+		'sanitize_callback' => 'sanitize_hex_color', // Sanitization function
+	));
+
+	// Add control for linear gradient background start color
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'background_gradient_start_color', array(
+		'label' => __('Gradient Start Color', 'mexclusive2'),
+		'section' => 'background_settings',
+	)));
+
+	// Add setting for linear gradient background end color
+	$wp_customize->add_setting('background_gradient_end_color', array(
+		'default' => '#ffffff', // Default color
+		'sanitize_callback' => 'sanitize_hex_color', // Sanitization function
+	));
+
+	// Add control for linear gradient background end color
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'background_gradient_end_color', array(
+		'label' => __('Gradient End Color', 'mexclusive2'),
+		'section' => 'background_settings',
+	)));
+}
+add_action('customize_register', 'mexclusive2_customize_register');
+
+function mexclusive2_customizer_styles() {
+	$start_color = get_theme_mod('background_gradient_start_color', '#1b7dff');
+	$end_color = get_theme_mod('background_gradient_end_color', '#ffffff');
+	?>
+    <style type="text/css">
+        .features {
+            background-image: linear-gradient(to bottom, <?php echo esc_attr($start_color); ?>, <?php echo esc_attr($end_color); ?>);
+        }
+    </style>
+	<?php
+}
+add_action('wp_head', 'mexclusive2_customizer_styles');
