@@ -15,29 +15,11 @@
 get_header(); ?>
     <div class="content-area">
         <main>
-            <section class="slider">
-                <div class="container">
-                    <div class="row">Slider</div>
-                </div>
-            </section>
-            <section class="popular-products">
-                <div class="container">
-                    <div class="row">Popular Products</div>
-                </div>
-            </section>
-            <section class="new-arrivals">
-                <div class="container">
-                    <div class="row">New Arrivals</div>
-                </div>
-            </section>
-            <section class="deal-of-the-week">
-                <div class="container">
-                    <div class="row">Deal of the week</div>
-                </div>
-            </section>
+
             <section class="blog">
                 <div class="container">
                     <div class="row">
+                        <div class="col-9">
                         <?php if (have_posts()):
                             while (have_posts()):the_post();?>
                                 <article>
@@ -50,6 +32,10 @@ get_header(); ?>
                             <p>Nothing found</p>
                         <?php endif;
                         ?>
+                        </div>
+                        <div class="col-3">
+                            <?php get_sidebar();?>
+                        </div>
                     </div>
                 </div>
             </section>

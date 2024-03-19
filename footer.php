@@ -34,6 +34,9 @@
             </div>
         </div>
     </section>
+    <section>
+	    <?php get_template_part( 'template-parts/footer/widgets' ); ?>
+    </section>
 </footer>
 </div>
 <?php wp_footer(); ?>

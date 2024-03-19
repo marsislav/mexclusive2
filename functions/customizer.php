@@ -231,9 +231,66 @@ function mexclusive2_customizer($wp_customize) {
 			'type' => 'number',
 		)
 	);
+
+
+	/*################## FOOTER SETTINGS ########################*/
+
+	$wp_customize->add_section('mexclusive_footer_options', array(
+		'title' => esc_html__( 'Footer Options', 'mexclusive2' ),
+		'description' => esc_html__( 'You can change footer options from here.', 'mexclusive2' )
+	));
+
+	$wp_customize->add_setting('mexclusive_site_info', array(
+		'default' => '',
+		'sanitize_callback' => 'wp_kses_post',
+		'transport' => 'postMessage'
+	));
+
+	$wp_customize->add_control('mexclusive_site_info', array(
+		'type' => 'textarea',
+		'label' => esc_html__( 'Site Info', 'mexclusive2' ),
+		'section' => 'mexclusive_footer_options'
+	));
+
+	$wp_customize->add_setting('mexclusive_footer_bg', array(
+		'default' => 'dark',
+		'transport' => 'postMessage',
+		'sanitize_callback' => 'sanitize_key'
+	));
+
+	$wp_customize->add_control('mexclusive_footer_bg', array(
+		'type' => 'select',
+		'label' => esc_html__( 'Footer Background', 'mexclusive2' ),
+		'choices' => array(
+			'light' => esc_html__( 'Light', 'mexclusive2' ),
+			'dark' => esc_html__( 'Dark', 'mexclusive2' ),
+		),
+		'section' => 'mexclusive_footer_options'
+	));
+
+	$wp_customize->add_setting('mexclusive_footer_layout', array(
+		'default' => '3,3,3,3',
+		'transport' => 'postMessage',
+		'sanitize_callback' => 'sanitize_text_field',
+		'validate_callback' => 'mexclusive_validate_footer_layout'
+	));
+
+	$wp_customize->add_control('mexclusive_footer_layout', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Footer Layout', 'mexclusive2' ),
+		'section' => 'mexclusive_footer_options'
+	));
+
 }
 
-add_action('customize_register', 'mexclusive2_customizer');
+add_action( 'customize_register', 'mexclusive2_customizer' );
+
+function mexclusive_validate_footer_layout( $validity, $value) {
+	if(!preg_match('/^([1-9]|1[012])(,([1-9]|1[012]))*$/', $value)) {
+		$validity->add('invalid_footer_layout', esc_html__( 'Footer layout is invalid', 'mexclusive2' ));
+	}
+	return $validity;
+}
 
 function mexclusive2_sanitize_checkbox ($checked) {
 	return ((isset($checked) && true == $checked) ? true : false);
