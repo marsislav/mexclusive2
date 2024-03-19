@@ -89,27 +89,33 @@ function display_last_post_in_random_categories() {
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
 	<?php wp_head(); ?>
+    <style>
+        /* Style for the focused menu item */
+        .focused {
+            background-color: #f0f0f0; /* Change the background color as needed */
+        }
+    </style>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open();?>
 <div id="page" class="site">
     <header>
-	    <?php
-	    // Get the latest post
-	    $latest_post = get_posts( array(
-		    'posts_per_page' => 1,
-		    'orderby'        => 'date',
-		    'order'          => 'DESC',
-	    ) );
+		<?php
+		// Get the latest post
+		$latest_post = get_posts( array(
+			'posts_per_page' => 1,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+		) );
 
-	    // Check if there's any post
-	    if ( $latest_post ) :
-		    // Loop through each post
-		    foreach ( $latest_post as $post ) :
-			    setup_postdata( $post );
+		// Check if there's any post
+		if ( $latest_post ) :
+			// Loop through each post
+			foreach ( $latest_post as $post ) :
+				setup_postdata( $post );
 
-			    // Display the post title
-			    ?>
+				// Display the post title
+				?>
                 <div class="latest-post">
                     <div class="container">
                         <div class="row align-items-center">
@@ -119,12 +125,12 @@ function display_last_post_in_random_categories() {
                             <div class="col-11">
                                 <div class="scrolling-wrapper">
                                     <div class="content d-flex align-items-center">
-									    <?php
-									    // Display the post thumbnail if available
-									    if ( has_post_thumbnail() ) :
-										    the_post_thumbnail( 'thumbnail', array( 'class' => 'me-3 img-fluid rounded-circle border border-3 border-primary me-2 small' ) ); // Adjust thumbnail size as needed
-									    endif;
-									    ?>
+										<?php
+										// Display the post thumbnail if available
+										if ( has_post_thumbnail() ) :
+											the_post_thumbnail( 'thumbnail', array( 'class' => 'me-3 img-fluid rounded-circle border border-3 border-primary me-2 small' ) ); // Adjust thumbnail size as needed
+										endif;
+										?>
                                         <p><?php the_title(); ?></p>
                                     </div>
                                 </div>
@@ -132,16 +138,16 @@ function display_last_post_in_random_categories() {
                         </div>
                     </div>
                 </div>
-		    <?php
-		    endforeach;
+			<?php
+			endforeach;
 
-		    // Restore global post data
-		    wp_reset_postdata();
-	    else :
-		    // If no posts found
-		    ?>
+			// Restore global post data
+			wp_reset_postdata();
+		else :
+			// If no posts found
+			?>
             <p>No posts found.</p>
-	    <?php endif; ?>
+		<?php endif; ?>
         <section class="search">
             <div class="container">
                 <div class="row"><?php get_search_form(); ?></div>
