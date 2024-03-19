@@ -9,7 +9,10 @@ require_once('functions/dynamic-meta.php');
 require_once('functions/class-wp-bootstrap-navwalker.php');
 require_once('functions/customizer.php');
 require_once('functions/sidebars.php');
-
+require_once('functions/reading-time.php');
+require_once('functions/posted-on.php');
+require_once('functions/post-views-counter.php');
+require_once('functions/get-author.php');
 
 //Leave it here
 

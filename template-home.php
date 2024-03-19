@@ -133,9 +133,9 @@ get_header(); ?>
 							while (have_posts()):the_post();?>
                                 <article class="col-12 col-md-6">
                                     <a href="<?php the_permalink();?>">
-                                    <?php if (has_post_thumbnail()):
-                                        the_post_thumbnail('full', array('class'=>'img-fluid'));
-                                    endif;
+                                    <?php if (has_post_thumbnail()) {
+	                                    the_post_thumbnail( 'full', array( 'class' => 'img-fluid' ) );
+                                    }
                                     ?>
                                     </a>
                                     <h3><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3>
