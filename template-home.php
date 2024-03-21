@@ -17,7 +17,7 @@ get_header(); ?>
         <main>
             <section class="slider">
 
-                <div id="mainSlider" class="carousel slide" data-bs-ride="carousel">
+                <div id="mainSlider" class="carousel slide mb-5" data-bs-ride="carousel">
                     <div class="carousel-inner">
 			            <?php
 			            // Loop through each slider page
@@ -56,7 +56,60 @@ get_header(); ?>
                     </button>
                 </div>
             </section>
-            <?php if (class_exists('WooCommerce')):?>
+	        <?php if (class_exists('WooCommerce')):?>
+<?php
+$showdeal= get_theme_mod('set_deal_show', 0);
+$deal= get_theme_mod('set_deal');
+$currency=get_woocommerce_currency_symbol();
+$regular= get_post_meta( $deal, '_regular_price', 'true' );
+$sale=get_post_meta( $deal, '_sale_price', 'true' );
+
+if($showdeal==1 && (!empty($deal))) :
+	$discount_percentage= absint(100- ($sale/$regular)*100);
+	?>
+    <section class="deal-of-the-week mb-5">
+        <div class="container">
+
+            <div class="row d-flex align-items-center">
+
+                <div class="deal-img col-md-6 col-12 ms-auto text-center">
+					<?php
+					echo get_the_post_thumbnail($deal, 'large', array ('class'=>'img-fluid rounded'));
+					?>
+                </div>
+                <div class="deal-desc col-md-4 col-12 me-auto text-center">
+                    <h2><?php _e('Deal of the week', 'mexclusive2');?></h2>
+					<?php if(!empty($sale)):?>
+                        <span class="discount">
+
+                                <?php echo '- '. $discount_percentage . '%';?>
+                            </span>
+					<?php endif;?>
+                    <h3>
+                        <a href="<?php echo  get_permalink('deal');?>"><?php echo get_the_title('deal');?></a>
+                    </h3>
+                    <p>
+						<?php echo get_the_excerpt($deal); ?>
+                    </p>
+                    <div class="prices">
+                                <span class="regular">
+                                    <?php echo $regular. ' '. $currency;?>
+                                </span>
+						<?php if(!empty($sale)):?>
+                            <span class="sale">
+                                        <?php echo $sale. ' '. $currency;?>
+                                    </span>
+						<?php endif;?>
+                    </div>
+                    <a href="<?php echo esc_url('?add-to-cart=' . $deal);?>" class="btn btn-primary"><?php _e('Add to cart', 'mexclusive2');?></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<?php endif;?>
+
+
             <section class="popular-products">
                 <div class="container">
                     <?php
@@ -77,56 +130,7 @@ get_header(); ?>
 	                <?php echo do_shortcode('[products limit="'. $arrivals_limit .'" columns="'. $arrivals_col .'" orderby="date"]');?>
                 </div>
             </section>
-            <?php
-            $showdeal= get_theme_mod('set_deal_show', 0);
-            $deal= get_theme_mod('set_deal');
-            $currency=get_woocommerce_currency_symbol();
-            $regular= get_post_meta( $deal, '_regular_price', 'true' );
-            $sale=get_post_meta( $deal, '_sale_price', 'true' );
-
-            if($showdeal==1 && (!empty($deal))) :
-                $discount_percentage= absint(100- ($sale/$regular)*100);
-            ?>
-            <section class="deal-of-the-week">
-                <div class="container">
-
-                    <div class="row d-flex align-items-center">
-                        <div class="deal-img col-md-6 col-12 ms-auto text-center">
-                            <?php
-                                echo get_the_post_thumbnail($deal, 'large', array ('class'=>'img-fluid'));
-                            ?>
-                        </div>
-                        <div class="deal-desc col-md-4 col-12 me-auto text-center">
-                            <h2><?php _e('Deal of the weeek', 'mexclusive2');?></h2>
-                            <?php if(!empty($sale)):?>
-                            <span class="discount">
-
-                                <?php echo '- '. $discount_percentage . '%';?>
-                            </span>
-                            <?php endif;?>
-                            <h3>
-                                <a href="<?php echo  get_permalink('deal');?>"><?php echo get_the_title('deal');?></a>
-                            </h3>
-                            <p>
-                                <?php echo get_the_excerpt($deal); ?>
-                            </p>
-                            <div class="prices">
-                                <span class="regular">
-                                    <?php echo $currency; echo $regular;?>
-                                </span>
-                                <?php if(!empty($sale)):?>
-                                    <span class="sale">
-                                        <?php echo $currency; echo $sale;?>
-                                    </span>
-                                <?php endif;?>
-                            </div>
-                            <a href="<?php echo esc_url('?add-to-cart=' . $deal);?>" class="add_to_cart_home"><?php _e('Add to cart', 'mexclusive2');?></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <?php endif;?>
-            <?php endif;?>
+	        <?php endif;?>
             <section class="blog">
                 <div class="container">
                     <div class="row">
@@ -135,7 +139,7 @@ get_header(); ?>
                                 <article class="col-12 col-md-6">
                                     <a href="<?php the_permalink();?>">
                                     <?php if (has_post_thumbnail()) {
-	                                    the_post_thumbnail( 'full', array( 'class' => 'img-fluid' ) );
+	                                    the_post_thumbnail( 'full', array( 'class' => 'img-fluid rounded' ) );
                                     }
                                     ?>
                                     </a>

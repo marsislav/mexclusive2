@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'BadScript';
+    src: url('../webfonts/BadScript-Regular.ttf') format('truetype'); /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /*Helpers*/
 
 .bypostauthor,
@@ -253,6 +261,36 @@ form.search-form {
     left:50%;
     transform: translate(-50%, -50%);
 }
+.carousel {
+    position:relative;
+}
+
+.carousel-caption {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: BadScript;
+
+}
+
+.carousel h5{
+    font-size:72px;
+    text-shadow: -3px 0px 10px #000000;
+
+}
+
+.carousel a.btn-primary {
+    font-size:28px;
+    padding:10px 25px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.deal-desc {
+    font-family: BadScript;
+}
 
 .w-100 {
     height: auto;
@@ -298,4 +336,11 @@ img.xs-small {
 color:#fff;
     text-align:center;
 
+}
+a:focus {
+ background: rgba(0,0,0,0.1);
+    text-decoration: underline;
+}
+.product img {
+    border-radius:10px;
 }

@@ -210,10 +210,10 @@ function display_last_post_in_random_categories() {
                                 <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
                                 ><?php _e( 'Logout', 'mexclusive2' ); ?></a>
 							<?php } else { ?>
-                                <li>
+
                                     <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
                                     ><?php _e( 'Login/Register', 'mexclusive2' ); ?></a>
-                                </li>
+
 							<?php }
 							} ?>
 
