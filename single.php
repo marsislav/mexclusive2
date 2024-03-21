@@ -39,7 +39,7 @@ get_header(); ?>
             <section id="post-<?php the_ID(); ?>" <?php post_class('blog'); ?>>
                 <div class="container">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-8">
 							<?php if ( have_posts() ):
 								while ( have_posts() ):the_post(); ?>
                                     <article>
@@ -83,6 +83,17 @@ get_header(); ?>
                                         <div>
                                             <?php the_content(); ?>
                                         </div>
+                                        <div class="pagination-container">
+		                                    <?php wp_link_pages( array(
+			                                    'before'      => '<div class="pagination"><span class="page-links-title">' . __( 'Pages:', 'mexclusive2' ) . '</span>',
+			                                    'after'       => '</div>',
+			                                    'link_before' => '<span class="page-number">',
+			                                    'link_after'  => '</span>',
+			                                    'next_or_number' => 'number',
+			                                    'nextpagelink' => __( 'Next page', 'mexclusive2' ),
+			                                    'previouspagelink' => __( 'Previous page', 'mexclusive2' ),
+		                                    ) );?>
+                                        </div>
                                         <hr>
 	                                    <?php if (has_tag()) {?>
                                             <div class="tab-class ">
@@ -123,7 +134,7 @@ get_header(); ?>
 							<?php endif;
 							?>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
 							<?php get_sidebar(); ?>
                         </div>
                     </div>

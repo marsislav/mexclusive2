@@ -36,37 +36,3 @@ jQuery(document).ready(function ($) {
         }
     });
 });
-
-//Nav
-
-    document.addEventListener('DOMContentLoaded', function () {
-    var menuItems = document.querySelectorAll('.navbar-nav > li > a');
-
-    // Add tabindex attribute to menu items
-    menuItems.forEach(function (menuItem, index) {
-    menuItem.setAttribute('tabindex', index + 1);
-});
-
-    // Add keyboard navigation functionality
-    document.addEventListener('keydown', function (event) {
-    var focusedElement = document.activeElement;
-    var currentIndex = Array.from(menuItems).indexOf(focusedElement);
-
-    if (event.altKey && event.key === 'Tab') {
-    event.preventDefault();
-    if (currentIndex === -1) {
-    // If no menu item is focused, focus the first one
-    menuItems[0].focus();
-} else if (event.shiftKey) {
-    // If Shift+Alt+Tab is pressed, navigate to the previous menu item
-    var previousIndex = currentIndex === 0 ? menuItems.length - 1 : currentIndex - 1;
-    menuItems[previousIndex].focus();
-} else {
-    // If Alt+Tab is pressed, navigate to the next menu item
-    var nextIndex = currentIndex === menuItems.length - 1 ? 0 : currentIndex + 1;
-    menuItems[nextIndex].focus();
-}
-}
-});
-});
-

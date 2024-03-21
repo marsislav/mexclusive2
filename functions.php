@@ -38,15 +38,15 @@ function mexclusive2_scripts() {
 
 	// Scripts
 	wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array( 'jquery' ), false, true );
-	if ( is_home() ) {
-		wp_register_script( 'mexclusive2_slider', get_template_directory_uri() . '/assets/js/slider.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'mexclusive2_slider' );
-	}
+
 	wp_register_script( 'mexclusive2-js', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery' ), false, true );
 
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'bootstrap' );
-
+	if ( is_home() ) {
+		wp_register_script( 'mexclusive2_slider', get_template_directory_uri() . '/assets/js/slider.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'mexclusive2_slider' );
+	}
 	wp_enqueue_script( 'mexclusive2-js' );
 }
 
@@ -187,3 +187,77 @@ function display_popular_tags() {
 		echo '<p>' . esc_html__( 'No tags found.', 'mexclusive2' ) . '</p>';
 	}
 }
+
+// functions.php
+
+// Add support for custom backgrounds
+function mytheme_custom_background_setup() {
+	$args = array(
+		'default-color'          => 'ffffff',
+		'default-image'          => get_template_directory_uri() . '/images/background.jpg',
+		'default-repeat'         => 'repeat',
+		'default-position-x'     => 'left',
+		'default-position-y'     => 'top',
+		'default-size'           => 'auto',
+		'default-attachment'     => 'scroll',
+		'wp-head-callback'       => '_custom_background_cb',
+		'admin-head-callback'    => '',
+		'admin-preview-callback' => ''
+	);
+	add_theme_support( 'custom-background', $args );
+}
+
+add_action( 'after_setup_theme', 'mytheme_custom_background_setup' );
+
+// functions.php
+
+// Add support for block patterns
+function mexclusive2_add_block_patterns() {
+	register_block_pattern(
+		'mytheme/custom-pattern-1',
+		array(
+			'title'       => __( 'Sample list', 'mexclusive2' ),
+			'description' => __( 'Description of Custom Pattern 1.', 'mexclusive2' ),
+			'content'     => '<div class="custom-pattern">
+    <h2 class="custom-pattern-heading">Custom Pattern Heading</h2>
+    <p class="custom-pattern-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <blockquote class="custom-pattern-blockquote">
+        <p class="custom-pattern-blockquote-text">This is a custom blockquote.</p>
+    </blockquote>
+    <ul class="custom-pattern-list">
+        <li class="custom-pattern-list-item">List item 1</li>
+        <li class="custom-pattern-list-item">List item 2</li>
+        <li class="custom-pattern-list-item">List item 3</li>
+    </ul>
+</div>',
+			'categories'  => array( 'text' ),
+			'keywords'    => array( 'custom', 'pattern', 'text' ),
+		)
+	);
+
+	// Register more custom block patterns as needed
+}
+
+add_action( 'init', 'mexclusive2_add_block_patterns' );
+
+
+// Add random sorting option to WooCommerce sort menu
+add_filter( 'woocommerce_catalog_orderby', 'custom_add_random_sorting_option' );
+
+function custom_add_random_sorting_option( $options ) {
+	$options['random'] = __( 'Random', 'mexclusive2' );
+
+	return $options;
+}
+
+// Handle sorting based on user selection
+add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_handle_random_sorting' );
+
+function custom_handle_random_sorting( $args ) {
+	if ( isset( $_GET['orderby'] ) && $_GET['orderby'] == 'random' ) {
+		$args['orderby'] = 'rand';
+	}
+
+	return $args;
+}
+

@@ -11,7 +11,7 @@ foreach ($columns as $i => $column) {
 }
 ?>
 <?php if($widgets_active) { ?>
-	<div class="c-footer c-footer--<?php echo $footer_bg; ?>">
+	<div class="lvl1-footer footer-bgr-<?php echo $footer_bg; ?>">
 		<div class="container">
 			<div class="row">
 				<?php

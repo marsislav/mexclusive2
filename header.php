@@ -13,10 +13,10 @@
 <?php
 function display_last_post_in_random_categories() {
 	// Get random categories
-	$categories = get_categories(array(
+	$categories = get_categories( array(
 		'orderby' => 'rand',
-		'number' => 4
-	));
+		'number'  => 4
+	) );
 
 	// Start the features section
 	$output = '<!-- Features Start -->
@@ -25,23 +25,23 @@ function display_last_post_in_random_categories() {
             <div class="row g-4">';
 
 	// Loop through each random category
-	foreach ($categories as $category) {
+	foreach ( $categories as $category ) {
 		// Define arguments for the query to get the last post in the category
 		$args = array(
 			'posts_per_page' => 1,
-			'post_type' => 'post',
-			'category__in' => array($category->term_id),
-			'orderby' => 'rand', // Order randomly
+			'post_type'      => 'post',
+			'category__in'   => array( $category->term_id ),
+			'orderby'        => 'rand', // Order randomly
 		);
 
 		// Perform the query
-		$query = new WP_Query($args);
+		$query = new WP_Query( $args );
 
 		// Get total post count in the category
 		$category_post_count = $category->count;
 
 		// Check if there are any posts
-		if ($query->have_posts()) {
+		if ( $query->have_posts() ) {
 			// Start the features item
 			$output .= '<div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="row g-4 align-items-center features-item">';
@@ -50,7 +50,7 @@ function display_last_post_in_random_categories() {
 			$output .= '<h6 class="text-uppercase mb-3"><span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white " style="top: 10%; right: -10px;">' . $category_post_count . '</span>' . $category->name . '</h6>';
 
 			// Display the last post title
-			while ($query->have_posts()) {
+			while ( $query->have_posts() ) {
 				$query->the_post();
 				$output .= '
                 <div class="col-8">
@@ -68,7 +68,7 @@ function display_last_post_in_random_categories() {
 			wp_reset_postdata();
 		} else {
 			$output .= sprintf(
-				esc_html__('No posts found in category %s', 'mexclusive2'),
+				esc_html__( 'No posts found in category %s', 'mexclusive2' ),
 				$category->name
 			);
 		}
@@ -80,6 +80,7 @@ function display_last_post_in_random_categories() {
 	// Output the generated HTML
 	echo $output;
 }
+
 ?>
 
 <!doctype html>
@@ -97,7 +98,7 @@ function display_last_post_in_random_categories() {
     </style>
 </head>
 <body <?php body_class(); ?>>
-<?php wp_body_open();?>
+<?php wp_body_open(); ?>
 <div id="page" class="site">
     <header>
 		<?php
@@ -120,7 +121,8 @@ function display_last_post_in_random_categories() {
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <i class="fa-solid fa-cloud-bolt"></i>
+                                <i class="fa-solid fa-cloud-bolt text-white"></i>
+	                            <?php _e( 'New:', 'mexclusive2' ); ?>
                             </div>
                             <div class="col-11">
                                 <div class="scrolling-wrapper">
@@ -156,77 +158,75 @@ function display_last_post_in_random_categories() {
         <section class="top-bar">
             <div class="container">
                 <div class="row">
-                    <div class="brand col-md-3 col-12 col-lg-2 text-center text-md-left">
+                    <div class="col-2">
+                        <div class="brand text-center text-md-left">
 
-						<?php if ( has_custom_logo() ) {
-							the_custom_logo();
-						} else {
-							echo esc_html( get_bloginfo( 'name' ) );
-							echo esc_html( get_bloginfo( 'description' ) );
-						} ?>
+							<?php if ( has_custom_logo() ) {
+								the_custom_logo();
+							} else {
+								echo esc_html( get_bloginfo( 'name' ) );
+								echo esc_html( get_bloginfo( 'description' ) );
+							} ?>
 
+                        </div>
                     </div>
-                    <div class="second-column col-md-9  col-12 col-lg-10">
-                        <div class="row">
-							<?php if ( class_exists( 'WooCommerce' ) ) { ?>
-                                <div class="cart col-12 text-end">
-                                    <div class="navbar-expand">
-                                        <ul class="navbar-nav float-left">
-											<?php if ( is_user_logged_in() ) { ?>
-                                                <li>
-                                                    <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-                                                       class="nav-link"><?php _e( 'My account', 'mexclusive2' ); ?></a>
-                                                </li>
-                                                <li>
-                                                    <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
-                                                       class="nav-link"><?php _e( 'Logout', 'mexclusive2' ); ?></a></li>
-											<?php } else { ?>
-                                                <li>
-                                                    <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-                                                       class="nav-link"><?php _e( 'Login/Register', 'mexclusive2' ); ?></a>
-                                                </li>
-											<?php } ?>
-                                        </ul>
-                                        <p><a href="#search">Search</a></p>
-                                    </div>
+                    <div class="col-8">
 
-                                    <a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><i
-                                                class="fa-solid fa-cart-shopping"></i></a>
-                                    <span class="items"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?> </span>
-                                </div>
-							<?php } ?>
-                            <div class="col-12">
-                                <nav class="navbar navbar-expand-md navbar-light main-menu" role="navigation">
 
-                                    <!-- Toggler/collapsible Button -->
-                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#bs-example-navbar-collapse-1"
-                                            aria-controls="bs-example-navbar-collapse-1" aria-expanded="false"
-                                            aria-label="<?php esc_attr_e( 'Toggle navigation', 'mexclusive2' ); ?>">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
+                        <nav class="navbar navbar-expand-md navbar-light main-menu" role="navigation">
+                            <!-- Toggler/collapsible Button -->
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#bs-example-navbar-collapse-1"
+                                    aria-controls="bs-example-navbar-collapse-1" aria-expanded="false"
+                                    aria-label="<?php esc_attr_e( 'Toggle navigation', 'mexclusive2' ); ?>">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <!-- Navbar links -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<?php
+								wp_nav_menu( array(
+									'theme_location' => 'main_menu',
+									'depth'          => 2,
+									'container'      => false,
+									'menu_class'     => 'navbar-nav me-auto mb-2 mb-md-0',
+									// Adjusted menu class
+									'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
+									'walker'         => new WP_Bootstrap_Navwalker(),
+									'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+									// Added items_wrap to wrap menu items in <ul>
+								) );
+								?>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-2">
+						<?php if ( class_exists( 'WooCommerce' ) ) { ?>
+                        <div class="cart text-end">
 
-                                    <!-- Navbar links -->
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-										<?php
-										wp_nav_menu( array(
-											'theme_location' => 'main_menu',
-											'depth'          => 2,
-											'container'      => false,
-											'menu_class'     => 'navbar-nav me-auto mb-2 mb-md-0',
-											// Adjusted menu class
-											'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
-											'walker'         => new WP_Bootstrap_Navwalker(),
-											'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-											// Added items_wrap to wrap menu items in <ul>
-										) );
-										?>
-                                    </div>
-                                </nav>
+							<?php if ( is_user_logged_in() ) { ?>
+
+                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"><?php _e( 'My account', 'mexclusive2' ); ?></a> /
+
+                                <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
+                                ><?php _e( 'Logout', 'mexclusive2' ); ?></a>
+							<?php } else { ?>
+                                <li>
+                                    <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
+                                    ><?php _e( 'Login/Register', 'mexclusive2' ); ?></a>
+                                </li>
+							<?php }
+							} ?>
+
+                            <div class="d-flex justify-content-end mt-3">
+                                <a href="#search"><i class="fa-solid fa-magnifying-glass"></i></a>
+	                            <?php if ( class_exists( 'WooCommerce' ) ) { ?>
+                                <a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><i
+                                            class="fa-solid fa-cart-shopping"></i></a>
+                                <span class="items"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?> </span>
+                                <?php }?>
                             </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>

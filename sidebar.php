@@ -21,7 +21,7 @@
 
 						<?php  display_last_ten_posts_in_current_category();?>
 
-						<h4 class="mb-0"><?php _e('Trending Tags', 'mexclusive2');?></h4>
+						<h4 class="mb-4"><?php _e('Trending Tags', 'mexclusive2');?></h4>
 
 					<?php display_popular_tags(); ?>
 </div>

@@ -9,7 +9,12 @@
  * @package mexclusive2
  */
 ?>
-<footer>
+<footer style="background-color: <?php echo get_theme_mod('footer_background_color', '#f0f0f0'); ?>; color: <?php echo get_theme_mod('footer_text_color', '#000000'); ?>;">
+    <style>
+        footer a {
+            color: <?php echo get_theme_mod('footer_link_color', '#3366cc'); ?>
+        }
+    </style>
     <section>
         <div class="container">
             <div class="row"><?php _e('Footer widgets', 'mexclusive2'); ?></div>
@@ -25,7 +30,11 @@
             </nav>
         </div>
     </div>
+
     <section>
+	    <?php get_template_part( 'template-parts/footer/widgets' ); ?>
+    </section>
+    <section class="copyright">
         <div class="container">
             <div class="row">
                 <p>
@@ -33,9 +42,6 @@
                 </p>
             </div>
         </div>
-    </section>
-    <section>
-	    <?php get_template_part( 'template-parts/footer/widgets' ); ?>
     </section>
 </footer>
 

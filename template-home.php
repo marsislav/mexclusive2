@@ -89,14 +89,15 @@ get_header(); ?>
             ?>
             <section class="deal-of-the-week">
                 <div class="container">
-                    <h2>Deal of the week</h2>
+
                     <div class="row d-flex align-items-center">
-                        <div class="deal-img col-md-6 col-12 ml-auto text-center">
+                        <div class="deal-img col-md-6 col-12 ms-auto text-center">
                             <?php
                                 echo get_the_post_thumbnail($deal, 'large', array ('class'=>'img-fluid'));
                             ?>
                         </div>
-                        <div class="deal-desc col-md-4 col-12 mr-auto text-center">
+                        <div class="deal-desc col-md-4 col-12 me-auto text-center">
+                            <h2><?php _e('Deal of the weeek', 'mexclusive2');?></h2>
                             <?php if(!empty($sale)):?>
                             <span class="discount">
 
@@ -119,7 +120,7 @@ get_header(); ?>
                                     </span>
                                 <?php endif;?>
                             </div>
-                            <a href="<?php echo esc_url('?add-to-cart=' . $deal);?>" class="add_to_cart_home">Add to cart</a>
+                            <a href="<?php echo esc_url('?add-to-cart=' . $deal);?>" class="add_to_cart_home"><?php _e('Add to cart', 'mexclusive2');?></a>
                         </div>
                     </div>
                 </div>
