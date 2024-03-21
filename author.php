@@ -37,7 +37,7 @@
 
     if ($author_posts_query->have_posts()) :
         while ($author_posts_query->have_posts()) : $author_posts_query->the_post();?>
-            <div class="row card-body" >
+            <div class="row card-body mb-5" >
                 <div class="col-md-4">
                     <div class="position-relative">
                     <?php if (has_category()) {?>

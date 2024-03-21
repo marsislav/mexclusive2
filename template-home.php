@@ -39,7 +39,7 @@ get_header(); ?>
                                         <div class="carousel-caption">
                                             <h5><?php echo esc_html(get_the_title($page_id)); ?></h5>
                                             <p><?php echo esc_html(get_the_excerpt($page_id)); ?></p>
-                                            <a href="<?php echo esc_url($button_url); ?>" class="btn btn-primary"><?php echo esc_html($button_text); ?></a>
+                                            <a href="<?php echo esc_url($button_url); ?>" class="btn btn-primary mt-5"><?php echo esc_html($button_text); ?></a>
                                         </div>
 						            <?php endif; ?>
 					            <?php endif; ?>
@@ -93,7 +93,6 @@ if($showdeal==1 && (!empty($deal))) :
                     </p>
                     <div class="prices">
                                 <span class="regular">
-                                    <?php echo $regular. ' '. $currency;?>
                                 </span>
 						<?php if(!empty($sale)):?>
                             <span class="sale">

@@ -23,7 +23,7 @@
     if ($tag_posts_query->have_posts()) : ?>
         
             <?php while ($tag_posts_query->have_posts()) : $tag_posts_query->the_post(); ?>
-            <div class="row card-body">
+            <div class="row card-body mb-5">
             <div class="col-md-4">
                     <div class="position-relative">
                     <?php if (has_category()) {?>
