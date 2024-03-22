@@ -108,6 +108,11 @@
     opacity: 1; /* Show content when loaded */
 }
 
+.header-image {
+    display:block;
+    margin: 0 auto;
+}
+
 /*Latest from blog*/
 .latest-post {
     background: #0b0b0b;
@@ -150,7 +155,7 @@ display:inline;
 }
 
 footer {
-    padding: 25px 0;
+    padding: 20px 0 0 0;
 }
 .main-menu .dropdown:hover>.dropdown-menu,
 .main-menu .dropup:hover>.dropdown-menu {

@@ -284,7 +284,24 @@ function mexclusive2_customizer($wp_customize) {
 		'section' => 'mexclusive2_footer_options'
 	));
 
+// Footer Menu - is active?
+	$wp_customize->add_setting(
+		'set_footer_menu_show',
+		array (
+			'type' => 'theme_mod',
+			'default' => '',
+			'sanitize_callback' => 'mexclusive2_sanitize_checkbox',
+		)
+	);
 
+	$wp_customize->add_control(
+		'set_footer_menu_show',
+		array (
+			'label' => __('Show footer menu?', 'mexclusive2'),
+			'section' => 'mexclusive2_footer_options',
+			'type' => 'checkbox',
+		)
+	);
 
 
 }

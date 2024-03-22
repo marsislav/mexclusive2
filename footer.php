@@ -15,11 +15,11 @@
             color: <?php echo esc_html(get_theme_mod('footer_link_color', '#3366cc')); ?>
         }
     </style>
-    <section>
-        <div class="container">
-            <div class="row"><?php _e('Footer widgets', 'mexclusive2'); ?></div>
-        </div>
-    </section>
+    <?php
+    $show_footer_menu= get_theme_mod('set_footer_menu_show', 0);
+
+
+    if($show_footer_menu==1) {?>
     <div class="container">
         <div class="row">
             <nav class="footer-menu">
@@ -30,7 +30,7 @@
             </nav>
         </div>
     </div>
-
+<?php } ?>
     <section>
 	    <?php get_template_part( 'template-parts/footer/widgets' ); ?>
     </section>

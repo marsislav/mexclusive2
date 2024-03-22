@@ -32,9 +32,9 @@ get_header(); ?>
 				            ?>
                             <div class="carousel-item <?php echo $active_class; ?>">
 					            <?php if ($page_id) : ?>
-                                    <a href="<?php echo esc_url(get_permalink($page_id)); ?>">
+
 							            <?php echo get_the_post_thumbnail($page_id, 'large', array('class' => 'd-block w-100', 'alt' => get_the_title($page_id))); ?>
-                                    </a>
+
 						            <?php if ($button_text && $button_url) : ?>
                                         <div class="carousel-caption">
                                             <h5><?php echo esc_html(get_the_title($page_id)); ?></h5>

@@ -148,8 +148,10 @@ function display_last_post_in_random_categories() {
 		else :
 			// If no posts found
 			?>
-            <p>No posts found.</p>
+            <p><?php _e('No posts found.', 'mexclusive2');?></p>
 		<?php endif; ?>
+
+	    <?php get_template_part( 'template-parts/header/header-image' ); ?>
         <section class="search">
             <div class="container">
                 <div class="row"><?php get_search_form(); ?></div>
