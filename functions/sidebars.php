@@ -15,13 +15,7 @@ function mexclusive2_sidebar_widgets() {
 $footer_layout = sanitize_text_field(get_theme_mod('mexclusive2_footer_layout', '3,3,3,3'));
 $footer_layout = preg_replace('/\s+/', '', $footer_layout);
 $columns = explode(',', $footer_layout);
-$footer_bg = mexclusive2_sanitize_footer_bg(get_theme_mod( 'mexclusive2_footer_bg', 'dark' ));
 $widget_theme = '';
-if($footer_bg == 'light') {
-    $widget_theme = 'c-footer-widget-dark';
-} else {
-    $widget_theme = 'c-footer-widget-light';
-}
 
 foreach ($columns as $i => $column) {
     register_sidebar( array(

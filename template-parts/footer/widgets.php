@@ -2,7 +2,6 @@
 $footer_layout = sanitize_text_field(get_theme_mod('mexclusive2_footer_layout', '3,3,3,3'));
 $footer_layout = preg_replace('/\s+/', '', $footer_layout);
 $columns = explode(',', $footer_layout);
-$footer_bg = mexclusive2_sanitize_footer_bg(get_theme_mod( 'mexclusive2_footer_bg', 'dark' ));
 $widgets_active = false;
 foreach ($columns as $i => $column) {
 	if( is_active_sidebar( 'footer-sidebar-' . ($i + 1) )) {
@@ -11,7 +10,7 @@ foreach ($columns as $i => $column) {
 }
 ?>
 <?php if($widgets_active) { ?>
-	<div class="lvl1-footer footer-bgr-<?php echo $footer_bg; ?>">
+	<div>
 		<div class="container">
 			<div class="row">
 				<?php

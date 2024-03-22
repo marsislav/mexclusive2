@@ -149,6 +149,9 @@ display:inline;
 
 }
 
+footer {
+    padding: 25px 0;
+}
 .main-menu .dropdown:hover>.dropdown-menu,
 .main-menu .dropup:hover>.dropdown-menu {
     display: block;
