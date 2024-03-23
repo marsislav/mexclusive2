@@ -135,7 +135,7 @@ if($showdeal==1 && (!empty($deal))) :
                     <div class="row">
 						<?php if (have_posts()):
 							while (have_posts()):the_post();?>
-                                <article class="col-12 col-md-6">
+                                <article class="col-12 col-md-6 home-img">
                                     <a href="<?php the_permalink();?>">
                                     <?php if (has_post_thumbnail()) {
 	                                    the_post_thumbnail( 'full', array( 'class' => 'img-fluid rounded' ) );
@@ -145,10 +145,11 @@ if($showdeal==1 && (!empty($deal))) :
                                     <h3><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3>
                                     <div class="excerpt"><?php the_excerpt();?></div>
                                 </article>
+
 							<?php
 							endwhile;
 						else :?>
-                            <p>Nothing found</p>
+                            <p><?php _e('Nothing found', 'mexclusive');?></p>
 						<?php endif;
 						?>
                     </div>

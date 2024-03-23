@@ -162,6 +162,9 @@ footer {
     display: block;
 }
 
+.main-menu .dropdown:focus-within .dropdown-menu {
+    display: block;
+}
 
 /*Woocommerce*/
 
@@ -351,4 +354,7 @@ a:focus {
 }
 .product img {
     border-radius:10px;
+}
+.home-img .wp-post-image {
+ height: 450px;
 }

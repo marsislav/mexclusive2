@@ -10,7 +10,7 @@
  */
 ?>
 
-<?php
+    <?php
 function display_last_post_in_random_categories() {
 	// Get random categories
 	$categories = get_categories( array(
@@ -120,9 +120,9 @@ function display_last_post_in_random_categories() {
                 <div class="latest-post">
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="col-1">
+                            <div class="col-1 text-white">
                                 <i class="fa-solid fa-cloud-bolt text-white"></i>
-	                            <?php _e( 'New:', 'mexclusive2' ); ?>
+	                            <?php _e( 'Newest:', 'mexclusive2' ); ?>
                             </div>
                             <div class="col-11">
                                 <div class="scrolling-wrapper">
