@@ -15,7 +15,7 @@
 get_header(); ?>
     <div class="content-area">
         <main>
-            <div class="container">
+            <div class="container" id="primary">
                 <div class="row">
                     <div class="col">
                         <ol class="breadcrumb justify-content-start mb-4">

@@ -234,6 +234,7 @@ function display_last_post_in_random_categories() {
             </div>
 
         </section>
+        <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'mexclusive2' ); ?></a>
     </header>
 </div>
 

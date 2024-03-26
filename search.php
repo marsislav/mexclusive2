@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="container py-5">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" id="primary">
             <h1><?php printf(esc_html__('Search results for: %s', 'mexclusive2'), get_search_query());?> </h1>
         </div>
     </div>
@@ -59,15 +59,15 @@
                     <div><?php the_excerpt(); ?></div>
                 </div>
         </div>
-        <div class="row py-5">
-        
-            <?php endwhile; ?>
-            <div class="col-12">
+            <div class="row py-5">
+
+	    <?php endwhile; ?>
+        <div class="col-12">
             <div class="pagination-container">
-            <?php get_template_part( 'template-parts/stuff/pagination' ); ?>
+			    <?php get_template_part( 'template-parts/stuff/pagination' ); ?>
             </div>
         </div>
-                </div>
+        </div>
 
     <?php else : ?>
         <div class="row py-5">

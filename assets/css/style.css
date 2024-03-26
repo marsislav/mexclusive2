@@ -113,6 +113,31 @@
     margin: 0 auto;
 }
 
+.features .rounded-circle {
+    width: 30px;
+    border-radius: 50% !important;
+    display: inline-block;
+    height: 30px;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 10px;
+}
+
+.woocommerce ul.products li.product .onsale {
+    margin:0!important;
+}
+
+.woocommerce span.onsale {
+     min-height: auto!important;
+    min-width: auto!important;
+
+    line-height: normal!important;
+    top: 0!important;
+    left: unset!important;
+    margin: 0;
+    border-radius: 10px!important;
+
+}
 /*Latest from blog*/
 .latest-post {
     background: #0b0b0b;

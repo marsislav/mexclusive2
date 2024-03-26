@@ -35,7 +35,7 @@ get_header(); ?>
                     <div class="row">Deal of the week</div>
                 </div>
             </section>
-            <section class="blog">
+            <section class="page" id="primary">
                 <div class="container">
                     <div class="row">
                         <?php if (have_posts()):
