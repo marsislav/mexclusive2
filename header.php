@@ -90,12 +90,6 @@ function display_last_post_in_random_categories() {
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
 	<?php wp_head(); ?>
-    <style>
-        /* Style for the focused menu item */
-        .focused {
-            background-color: #f0f0f0; /* Change the background color as needed */
-        }
-    </style>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
@@ -133,7 +127,7 @@ function display_last_post_in_random_categories() {
 											the_post_thumbnail( 'thumbnail', array( 'class' => 'me-3 img-fluid rounded-circle border border-3 border-primary me-2 small' ) ); // Adjust thumbnail size as needed
 										endif;
 										?>
-                                        <p><?php the_title(); ?></p>
+                                        <p><a href="<?php the_permalink();?>" class="text-white"><?php the_title(); ?></a></p>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +166,7 @@ function display_last_post_in_random_categories() {
 
                         </div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-8 d-md-flex justify-content-center">
 
 
                         <nav class="navbar navbar-expand-md navbar-light main-menu" role="navigation">
@@ -181,6 +175,7 @@ function display_last_post_in_random_categories() {
                                     data-bs-target="#bs-example-navbar-collapse-1"
                                     aria-controls="bs-example-navbar-collapse-1" aria-expanded="false"
                                     aria-label="<?php esc_attr_e( 'Toggle navigation', 'mexclusive2' ); ?>">
+                                <?php _e('Menu','mexclusive2');?>
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <!-- Navbar links -->
@@ -201,13 +196,13 @@ function display_last_post_in_random_categories() {
                             </div>
                         </nav>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 header-stuff">
 						<?php if ( class_exists( 'WooCommerce' ) ) { ?>
                         <div class="cart text-end">
 
 							<?php if ( is_user_logged_in() ) { ?>
 
-                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"><?php _e( 'My account', 'mexclusive2' ); ?></a> /
+                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"><?php _e( 'Account', 'mexclusive2' ); ?></a> /
 
                                 <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
                                 ><?php _e( 'Logout', 'mexclusive2' ); ?></a>

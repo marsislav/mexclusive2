@@ -136,8 +136,20 @@
     left: unset!important;
     margin: 0;
     border-radius: 10px!important;
+    background: red!important;
 
 }
+
+.flex-column {
+    word-break: break-word;
+}
+
+.pagination {
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+}
+
 /*Latest from blog*/
 .latest-post {
     background: #0b0b0b;
@@ -277,7 +289,8 @@ footer {
     right: 15px;
     color: #fff;
     background-color: limegreen;
-    border-color: green;
+    border-radius: 10px;
+    border:0;
     opacity: 1;
     padding: 10px 17px;
     font-size: 27px;
@@ -382,4 +395,113 @@ a:focus {
 }
 .home-img .wp-post-image {
  height: 450px;
+}
+
+.btn-primary{
+    border:0;
+    color:#fff!important;
+    text-shadow:-3px 0 10px #000000;
+}
+
+.add_to_cart_button {
+    width: 100%;
+    text-align: center;
+    color:#fff!important;
+    text-shadow:-3px 0 10px #000000!important;
+    background: #1b7dff!important;
+}
+
+ .focused {
+     background-color: #f0f0f0; /* Change the background color as needed */
+ }
+
+ .header-stuff {
+     margin-top:40px;
+ }
+ .header-stuff i.fa-solid.fa-magnifying-glass {
+     margin-right: 20px;
+ }
+
+ ul.dropdown-menu li {
+ margin:0;
+ }
+ .mb-30 {
+     margin-bottom: 30px;
+ }
+
+
+ .pagination-container {
+     max-width: 200px;
+     margin: 0 auto;
+ }
+
+.pagination-container .page-numbers {
+     display: flex;
+     justify-content: space-between;
+     list-style: none;
+ }
+
+
+#commentform input{
+    width:100%;
+}
+
+.comment-meta a{
+    color:#1b7dff;
+}
+
+#submit {
+    background-color: #1b7dff;
+    padding:10px;
+    border-radius:10px;
+    color:#fff;
+    text-shadow:-3px 0 10px #000000;
+    border:0;
+    transition: 0.3s;
+}
+
+#submit:hover {
+    background-color: #0a4b78;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+
+        justify-content: center;
+        margin-top:50px;
+        text-align: center;
+        z-index: 999; }
+
+
+
+    #menu-mainmenu{
+        position: absolute;
+        width:100%;
+        background: rgba(0, 141, 167, 0.4);
+        margin-top:5px;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+    .dropdown-menu {
+        border: 0;
+        text-align: center;
+        background: rgba(0, 141, 167, 0.5);
+    }
+    .focused{
+    background: transparent;}
+
+    .main-menu ul li{
+        margin:0;
+    }
+}
+
+
+
+nav.footer-menu ul li {
+    display: inline-block;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
 }

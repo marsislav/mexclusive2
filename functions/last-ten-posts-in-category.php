@@ -1,10 +1,11 @@
+
 <?php
 function display_last_ten_posts_in_current_category() {
 // Get the current post's categories
 $categories = get_the_category();
 
 // If the post has categories
-if ( $categories ) {
+if ($categories) {
 // Get the first category slug
 $category_slug = $categories[0]->slug;
 
@@ -18,26 +19,25 @@ $args = array(
 );
 
 // Perform the query
-$query = new WP_Query( $args );
+$query = new WP_Query($args);
 
 // Check if there are any posts
-if ( $query->have_posts() ) {
+if ($query->have_posts()) {
 echo '<ul class="last-ten-posts">';
-	while ( $query->have_posts() ) {
+	while ($query->have_posts()) {
 	$query->the_post();
 	echo '<li>';
 		// Display post title with link
-		echo '<a href="' . get_permalink() . '">' . the_post_thumbnail( 'thumbnail', array( 'class' => 'xs-small rounded-circle' ) ) . get_the_title() . '</a>';
+		echo '<a href="' . esc_url(get_permalink()) . '">' . get_the_post_thumbnail(get_the_ID(), 'thumbnail', array('class' => 'xs-small rounded-circle')) . esc_html(get_the_title()) . '</a>';
 		echo '</li>';
 	}
 	echo '</ul>';
 // Restore original post data
 wp_reset_postdata();
 } else {
-echo esc_html__( 'No posts found in this category.', 'mexclusive2' );
+echo esc_html__('No posts found in this category.', 'mexclusive2');
 }
 } else {
-
-echo esc_html__( 'This post does not have any categories.', 'mexclusive2' );
+echo esc_html__('This post does not have any categories.', 'mexclusive2');
 }
 }

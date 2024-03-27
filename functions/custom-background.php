@@ -3,7 +3,7 @@
 function mexclusive2_custom_background_setup() {
 $args = array(
 'default-color'          => 'ffffff',
-'default-image'          => get_template_directory_uri() . '/images/background.jpg',
+'default-image'          => '',
 'default-repeat'         => 'repeat',
 'default-position-x'     => 'left',
 'default-position-y'     => 'top',

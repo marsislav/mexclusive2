@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="container py-5">
+<div class="container py-5" id="primary">
     <div class="row">
         <div class="col-12">
             <h1><?php printf(esc_html__('All posts in category: %s', 'mexclusive2'), single_cat_title('', false)); ?></h1>

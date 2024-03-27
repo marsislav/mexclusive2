@@ -7,7 +7,6 @@
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no template-home.php file exists.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package mExlusive2
  */
@@ -55,7 +54,7 @@ get_header(); ?>
                                                 </div>
 		                                    <?php } ?>
                                         </div>
-                                        <div class="d-flex justify-content-between post-info mb-5">
+                                        <div class="d-flex justify-content-between post-info mb-2">
                                             <i class="fa fa-clock"></i> <?php display_reading_time();?>
 		                                    <?php mexclusive2_postedOn(); ?>
                                             <i class="fa fa-eye"></i>
@@ -121,7 +120,7 @@ get_header(); ?>
                                                 </div>
                                             </div>
 	                                    <?php } ?>
-                                        <hr>
+
 	                                    <?php get_template_part('/template-parts/single/about-the-author'); ?>
 	                                    <?php get_template_part('/template-parts/single/navigation'); ?>
 	                                    <?php if (comments_open()) {comments_template();}?>
@@ -130,7 +129,7 @@ get_header(); ?>
 								<?php
 								endwhile;
 							else :?>
-                                <p>Nothing found</p>
+                                <p><?php _e('Nothing found', 'mexclusive2');?></p>
 							<?php endif;
 							?>
                         </div>

@@ -60,7 +60,7 @@
             <div class="col-md-8">
                 
                     <h5 class="card-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-                <div class="d-flex justify-content-between post-info mb-2">
+                <div class="d-flex justify-content-between post-info mb-2 mt-3">
                     <i class="fa fa-clock"></i> <?php display_reading_time();?>
                     <?php mexclusive2_postedOn(); ?>
                     <i class="fa fa-eye"></i> 
@@ -85,7 +85,7 @@
                     </a>
                     
                 </div>
-                    <p class="card-text"><?php the_excerpt(); ?></p>
+                    <div class="card-text"><?php the_excerpt(); ?></div>
                 
             </div> 
         </div>
@@ -97,8 +97,8 @@
         echo esc_html__('No posts found by this author.', 'mexclusive2');
     endif;
     ?>
-   
-    <div class="row py-5">
+
+    <div class="row">
         <div class="col-12">
             <div class="pagination-container">
             <?php

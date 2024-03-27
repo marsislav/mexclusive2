@@ -9,37 +9,40 @@
  * @package mexclusive2
  */
 ?>
-<footer style="background-color: <?php echo esc_html(get_theme_mod('footer_background_color', '#f0f0f0')); ?>; color: <?php echo esc_html(get_theme_mod('footer_text_color', '#000000')); ?>;">
+<footer style="background-color: <?php echo esc_attr(get_theme_mod('footer_background_color', '#f0f0f0')); ?>; color: <?php echo esc_attr(get_theme_mod('footer_text_color', '#000000')); ?>;">
     <style>
         footer a {
-            color: <?php echo esc_html(get_theme_mod('footer_link_color', '#3366cc')); ?>
+            color: <?php echo esc_attr(get_theme_mod('footer_link_color', '#3366cc')); ?>;
         }
     </style>
-    <?php
-    $show_footer_menu= get_theme_mod('set_footer_menu_show', 0);
 
-
-    if($show_footer_menu==1) {?>
-    <div class="container">
-        <div class="row">
-            <nav class="footer-menu">
-				<?php wp_nav_menu(
-					array(
-						'theme_location' => 'footer_menu'
-					)); ?>
-            </nav>
-        </div>
-    </div>
-<?php } ?>
     <section>
-	    <?php get_template_part( 'template-parts/footer/widgets' ); ?>
+		<?php get_template_part('template-parts/footer/widgets'); ?>
     </section>
     <section class="copyright">
         <div class="container">
             <div class="row">
-                <p>
-					<?php echo esc_html(get_theme_mod('set_copyright', __('Copyright - X. All rights reserved.', 'mexclusive2'))); ?>
-                </p>
+                <div>
+					<?php echo wp_kses_post(get_theme_mod('set_copyright', __('Copyright - X. All rights reserved.', 'mexclusive2'))); ?>
+                </div>
+	            <?php
+	            $show_footer_menu = get_theme_mod('set_footer_menu_show', 0);
+
+	            if ($show_footer_menu == 1) : ?>
+                    <div class="container">
+                        <div class="row">
+                            <nav class="footer-menu">
+					            <?php
+					            wp_nav_menu(
+						            array(
+							            'theme_location' => 'footer_menu'
+						            )
+					            );
+					            ?>
+                            </nav>
+                        </div>
+                    </div>
+	            <?php endif; ?>
             </div>
         </div>
     </section>
