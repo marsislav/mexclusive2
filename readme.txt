@@ -1,6 +1,6 @@
 === mexclusive2 ===
 Contributors: Marsislav
-Tags: one-column, two-columns, news, blog, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options, responsive, woocommerce
+Tags:two-columns, news, blog, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options, responsive, woocommerce
 Requires at least: WordPress 4.7
 Tested up to: WordPress 6.4
 Requires PHP: 7.3
@@ -43,4 +43,4 @@ Copyright: 2018 Twitter
 
 == Frequently Asked Questions ==
 1) How to customize this theme? - Go to Wordpress->Appearance->Customize
-2) Is this theme use some non-free scripts? - Thsi theme uses only Free Font Awesome icons and Bootstrap
+2) Is this theme use some non-free scripts? - This theme uses only Free Font Awesome version and Bootstrap. The rest is build from scratch.
