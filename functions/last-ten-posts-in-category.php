@@ -1,4 +1,3 @@
-
 <?php
 function display_last_ten_posts_in_current_category() {
 // Get the current post's categories
