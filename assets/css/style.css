@@ -368,7 +368,7 @@ span.post-counter{
     text-align: center;
     line-height: 40px;
     font-size: 17px;
-    color:#fff;
+    color:#fff!important;
     text-shadow: -3px 0 10px #000000;
     margin-right:15px;
 
