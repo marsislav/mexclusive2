@@ -517,7 +517,6 @@ nav.footer-menu ul li {
     margin: 0 auto;
 }
 
-/*TEST blah blah blah*/
 h5{
     font-size: calc(14px + (72 - 14) * ((100vw - 300px) / (1600 - 300)))!important;
 
