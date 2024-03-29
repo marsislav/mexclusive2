@@ -12,7 +12,7 @@
 <footer style="background-color: <?php echo esc_attr(get_theme_mod('footer_background_color', '#f0f0f0')); ?>; color: <?php echo esc_attr(get_theme_mod('footer_text_color', '#000000')); ?>;">
     <style>
         footer a {
-            color: <?php echo esc_attr(get_theme_mod('footer_link_color', '#3366cc')); ?>;
+            color: <?php echo esc_attr(get_theme_mod('footer_link_color', '#3366cc')) ?>!important;
         }
     </style>
 

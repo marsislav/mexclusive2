@@ -137,6 +137,8 @@
     margin: 0;
     border-radius: 10px!important;
     background: red!important;
+    color:#fff!important;
+    text-shadow: -3px 0px 10px #000000!important;
 
 }
 
@@ -341,6 +343,7 @@ form.search-form {
     font-family: BadScript;
 }
 
+
 .w-100 {
     height: auto;
 }
@@ -418,7 +421,7 @@ a:focus {
  .header-stuff {
      margin-top:40px;
  }
- .header-stuff i.fa-solid.fa-magnifying-glass {
+ .header-stuff i.fa-solid.fa-magnifying-glass, .fa-solid.fa-user {
      margin-right: 20px;
  }
 
@@ -495,6 +498,14 @@ a:focus {
     .main-menu ul li{
         margin:0;
     }
+
+    .home-img .wp-post-image {
+        height: unset;
+    }
+
+    .deal-desc {
+        margin-top:30px;
+    }
 }
 
 
@@ -504,4 +515,25 @@ nav.footer-menu ul li {
     text-align: center;
     max-width: 90%;
     margin: 0 auto;
+}
+
+/*TEST blah blah blah*/
+h5{
+    font-size: calc(14px + (72 - 14) * ((100vw - 300px) / (1600 - 300)))!important;
+
+    /*14px: This is the minimum font size you want to use.
+
+    72px: This is the maximum font size you want to use.
+
+    100vw: This represents the viewport width. It's essentially the width of the browser window.
+
+    300px: This is a reference point where the font size starts to increase.
+
+    1600px: This is the maximum viewport width where the font size reaches its maximum value.
+
+    So, when the viewport width (vw) is between 300px and 1600px, the font size smoothly increases from 14px to 26px.*/
+}
+
+.btn-primary {
+    font-size: calc(14px + (34 - 14) * ((100vw - 300px) / (1600 - 300))) !important;
 }

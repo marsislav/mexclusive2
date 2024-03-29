@@ -43,7 +43,7 @@ get_header(); ?>
                                             <h5><?php echo esc_html( get_the_title( $page_id ) ); ?></h5>
                                             <p><?php echo esc_html( get_the_excerpt( $page_id ) ); ?></p>
                                             <a href="<?php echo esc_url( $button_url ); ?>"
-                                               class="btn btn-primary mt-5"><?php echo esc_html( $button_text ); ?></a>
+                                               class="btn btn-primary"><?php echo esc_html( $button_text ); ?></a>
                                         </div>
 									<?php endif; ?>
 								<?php endif; ?>
@@ -83,7 +83,7 @@ get_header(); ?>
 									echo get_the_post_thumbnail( $deal, 'large', array( 'class' => 'img-fluid rounded' ) );
 									?>
                                 </div>
-                                <div class="deal-desc col-md-4 col-12 me-auto text-center">
+                                <div class="deal-desc col-md-4 col-12 me-auto text-center mt-">
                                     <h2><?php _e( 'Deal of the week', 'mexclusive2' ); ?></h2>
 									<?php if ( ! empty( $sale ) ): ?>
                                         <span class="discount">
@@ -142,7 +142,7 @@ get_header(); ?>
                     <div class="row">
 						<?php if ( have_posts() ):
 							while ( have_posts() ):the_post(); ?>
-                                <article class="col-12 col-md-6 home-img position-relative mb-30">
+                                <article class="col-sm-12 col-md-6 home-img position-relative mb-30">
 									<?php
 									$categories = get_the_category();
 									if ( ! empty( $categories ) ) {

@@ -202,14 +202,18 @@ function display_last_post_in_random_categories() {
 
 							<?php if ( is_user_logged_in() ) { ?>
 
-                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"><?php _e( 'Account', 'mexclusive2' ); ?></a> /
 
-                                <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
-                                ><?php _e( 'Logout', 'mexclusive2' ); ?></a>
+                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>" title="<?php _e( 'My Account', 'mexclusive2' ); ?>">
+                                    <i class="fa-solid fa-user"></i>
+                                    </a>
+
+                                <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>" title="<?php _e( 'Logout', 'mexclusive2' ); ?>">
+                                    <i class="fa-solid fa-door-open"></i>
+                                    </a>
 							<?php } else { ?>
 
-                                    <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-                                    ><?php _e( 'Login/Register', 'mexclusive2' ); ?></a>
+                                    <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>" title="<?php _e( 'Login/ Register', 'mexclusive2' ); ?>"
+                                    ><i class="fa-solid fa-address-card" ></i></a>
 
 							<?php }
 							} ?>
