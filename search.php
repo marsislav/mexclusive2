@@ -10,7 +10,7 @@
         <div class="row card-body">
             <?php while (have_posts()) : the_post(); ?>
 
-                <div class="col-4">
+                <div class="col-12 col-lg-4">
                 <div class="position-relative">
                     <?php if (has_category()) {?>
                         <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">                                                       
@@ -29,7 +29,7 @@
                     <?php endif; ?>
                 </div>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-lg-8">
                     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     <div class="d-flex justify-content-between post-info mb-2">
                     <i class="fa fa-clock"></i> <?php display_reading_time();?>

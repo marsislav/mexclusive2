@@ -38,7 +38,8 @@ get_header(); ?>
             <section id="post-<?php the_ID(); ?>" <?php post_class('blog'); ?>>
                 <div class="container">
                     <div class="row">
-                        <div class="col-8">
+
+                        <div class="col-12 col-lg-8">
 							<?php if ( have_posts() ):
 								while ( have_posts() ):the_post(); ?>
                                     <article>
@@ -133,7 +134,7 @@ get_header(); ?>
 							<?php endif;
 							?>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-lg-4">
 							<?php get_sidebar(); ?>
                         </div>
                     </div>

@@ -12,6 +12,7 @@ function mexclusive2_increment_post_views() {
 // Hook into WordPress
 add_action('template_redirect', 'mexclusive2_increment_post_views');
 
+
 // Function to display post views count
 function mexclusive2_display_post_views() {
 	global $post;
