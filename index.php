@@ -43,7 +43,7 @@ get_header(); ?>
                                             <h5><?php echo esc_html( get_the_title( $page_id ) ); ?></h5>
                                             <p><?php echo esc_html( get_the_excerpt( $page_id ) ); ?></p>
                                             <a href="<?php echo esc_url( $button_url ); ?>"
-                                               class="btn btn-primary mt-5"><?php echo esc_html( $button_text ); ?></a>
+                                               class="btn btn-primary mt-md-5"><?php echo esc_html( $button_text ); ?></a>
                                         </div>
 									<?php endif; ?>
 								<?php endif; ?>

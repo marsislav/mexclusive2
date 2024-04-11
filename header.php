@@ -154,7 +154,7 @@ function display_last_post_in_random_categories() {
         <section class="top-bar">
             <div class="container">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-2 col-12 col-md-auto">
                         <div class="brand text-center text-md-left">
 
 							<?php if ( has_custom_logo() ) {
