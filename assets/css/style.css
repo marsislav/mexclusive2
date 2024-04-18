@@ -373,9 +373,9 @@ a:focus {
 .focused {
   background-color: #f0f0f0;
 }
-.header-stuff {
+/*.header-stuff {
   margin-top: 40px;
-}
+}*/
 .fa-solid.fa-user,
 .header-stuff i.fa-solid.fa-magnifying-glass {
   margin-right: 20px;
@@ -456,4 +456,51 @@ h5 {
   font-size: calc(
     14px + (72 - 14) * ((100vw - 300px) / (1600 - 300))
   ) !important;
+}
+
+@media only screen and (min-width: 1000px) {
+	.top-bar {
+		padding:20px 0!important;
+		
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.header-stuff {
+		display:none;
+		
+	}
+}
+
+.wpcf7 input {
+ width:100%;
+}
+.wpcf7 text-area {
+    width:100%;
+}
+.full, textarea#comment {
+	width:100%!important;
+}
+
+
+@media (max-width: 767px) {
+  .hide-on-desktop {
+    display: inline;
+  }
+  .show-on-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-on-desktop {
+    display: none;
+  }
+  .show-on-desktop {
+    display: inline;
+  }
+}
+
+.post-info {
+  display: block !important;
 }

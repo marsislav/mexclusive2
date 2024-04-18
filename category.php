@@ -37,7 +37,7 @@
                         <?php
                         $views = mexclusive2_display_post_views();
                         printf(
-                            _n('%d View', '%d Views', $views, 'mexclusive2'),
+                            _n('%d view', '%d views', $views, 'mexclusive2'),
                             $views
                         );
                         ?>
@@ -45,8 +45,8 @@
                             <?php
                             printf(
                                 _n(
-                                    '%s Comment',
-                                    '%s Comments',
+                                    '%s comment',
+                                    '%s comments',
                                     get_comments_number(),
                                     'mexclusive2'
                                 ),
@@ -71,7 +71,7 @@
     <?php else : ?>
         <div class="row py-5">
             <div class="col-12">
-                <p><?php esc_html_e('No posts found in this category.', 'mexclusive2'); ?></p>
+                <p><?php esc_html_e('There are no posts in this category.', 'mexclusive2'); ?></p>
             </div>
         </div>
     <?php endif; ?>

@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: Home page
  * The main template file
  *
  * This is the most generic template file in a WordPress theme
@@ -62,6 +63,55 @@ get_header(); ?>
                     </button>
                 </div>
             </section>
+			
+			<section class="blog">
+                <div class="container">
+                    <div class="row">
+						<?php if ( have_posts() ):
+							while ( have_posts() ):the_post(); ?>
+                                <article class="col-sm-12 home-img position-relative mb-30">
+									<?php
+									$categories = get_the_category();
+									if ( ! empty( $categories ) ) {
+										$first_category = $categories[0]; // Get the first category
+									}
+									?>
+									<?php if ( has_category() ) { ?>
+                                        <div class="position-absolute px-4 py-2 bg-primary rounded"
+                                             style="top: 20px; right: 20px;">
+                                            <a href="<?php echo esc_url( get_category_link( $first_category ) ); ?>"><?php echo esc_html( $first_category->name ); ?></a>
+                                        </div>
+									<?php } ?>
+
+
+                                    <a href="<?php the_permalink(); ?>">
+										<?php if ( has_post_thumbnail() ) {
+											the_post_thumbnail( 'full', array( 'class' => 'img-fluid rounded' ) );
+										}
+										?>
+                                    </a>
+                                    <h3><?php the_title(); ?></h3>
+                                    <div class="excerpt"><?php the_content(); ?></div>
+                                </article>
+
+							<?php
+							endwhile;
+						else :?>
+                            <p><?php _e( 'Nothing found', 'mexclusive2' ); ?></p>
+						<?php endif;
+						?>
+                    </div>
+                </div>
+                <!-- Add pagination here -->
+
+                <div class="pagination mb-5">
+		            <?php the_posts_pagination( array(
+			            'prev_text' =>  __( '&laquo;', 'mexclusive2' ),
+			            'next_text' => __( '&raquo;', 'mexclusive2' ),
+		            ) ); ?>
+                </div>
+
+            </section>
 			<?php if ( class_exists( 'WooCommerce' ) ): ?>
 				<?php
 				$showdeal = get_theme_mod( 'set_deal_show', 0 );
@@ -107,7 +157,7 @@ get_header(); ?>
 										<?php endif; ?>
                                     </div>
                                     <a href="<?php echo esc_url( '?add-to-cart=' . $deal ); ?>"
-                                       class="btn btn-primary"><?php _e( 'Add to cart', 'mexclusive2' ); ?></a>
+                                       class="btn btn-primary"><?php _e( 'Add', 'mexclusive2' ); ?></a>
                                 </div>
                             </div>
 
@@ -126,65 +176,18 @@ get_header(); ?>
 
 						?>
 
-                        <h2><?php _e('Popular Products', 'mexclusive2');?></h2>
+                        <h2><?php _e('Popular products', 'mexclusive2');?></h2>
 						<?php echo do_shortcode( '[products limit=" ' . $popular_limit . ' " columns="' . $popular_col . '" orderby="popularity"]' ); ?>
                     </div>
                 </section>
                 <section class="new-arrivals">
                     <div class="container">
-                        <h2><?php _e('New Arrivals', 'mexclusive2');?></h2>
+                        <h2><?php _e('New products', 'mexclusive2');?></h2>
 						<?php echo do_shortcode( '[products limit="' . $arrivals_limit . '" columns="' . $arrivals_col . '" orderby="date"]' ); ?>
                     </div>
                 </section>
 			<?php endif; ?>
-            <section class="blog">
-                <div class="container">
-                    <div class="row">
-						<?php if ( have_posts() ):
-							while ( have_posts() ):the_post(); ?>
-                                <article class="col-sm-12 col-md-6 home-img position-relative mb-30">
-									<?php
-									$categories = get_the_category();
-									if ( ! empty( $categories ) ) {
-										$first_category = $categories[0]; // Get the first category
-									}
-									?>
-									<?php if ( has_category() ) { ?>
-                                        <div class="position-absolute px-4 py-2 bg-primary rounded"
-                                             style="top: 20px; right: 20px;">
-                                            <a href="<?php echo esc_url( get_category_link( $first_category ) ); ?>"><?php echo esc_html( $first_category->name ); ?></a>
-                                        </div>
-									<?php } ?>
-
-
-                                    <a href="<?php the_permalink(); ?>">
-										<?php if ( has_post_thumbnail() ) {
-											the_post_thumbnail( 'full', array( 'class' => 'img-fluid rounded' ) );
-										}
-										?>
-                                    </a>
-                                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                    <div class="excerpt"><?php the_excerpt(); ?></div>
-                                </article>
-
-							<?php
-							endwhile;
-						else :?>
-                            <p><?php _e( 'Nothing found', 'mexclusive2' ); ?></p>
-						<?php endif;
-						?>
-                    </div>
-                </div>
-                <!-- Add pagination here -->
-
-                <div class="pagination mb-5">
-		            <?php the_posts_pagination( array(
-			            'prev_text' =>  __( '&laquo;', 'mexclusive2' ),
-			            'next_text' => __( '&raquo;', 'mexclusive2' ),
-		            ) ); ?>
-                </div>
-
-            </section>
+            
 
 
 

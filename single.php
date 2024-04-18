@@ -62,15 +62,15 @@ get_header(); ?>
 		                                    <?php
 		                                    $views = mexclusive2_display_post_views();
 		                                    printf(
-			                                    _n('%d View', '%d Views', $views, 'mexclusive2'),
+			                                    _n('%d view', '%d views', $views, 'mexclusive2'),
 			                                    $views );
 		                                    ?>
                                             <a href="#comments" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i>
 			                                    <?php
 			                                    printf(
 				                                    _n(
-					                                    '%s Comment',
-					                                    '%s Comments',
+					                                    '%s comment',
+					                                    '%s comments',
 					                                    get_comments_number(),
 					                                    'mexclusive2'
 				                                    ),
@@ -90,8 +90,8 @@ get_header(); ?>
 			                                    'link_before' => '<span class="page-number">',
 			                                    'link_after'  => '</span>',
 			                                    'next_or_number' => 'number',
-			                                    'nextpagelink' => __( 'Next page', 'mexclusive2' ),
-			                                    'previouspagelink' => __( 'Previous page', 'mexclusive2' ),
+			                                    'nextpagelink' => __( 'Next', 'mexclusive2' ),
+			                                    'previouspagelink' => __( 'Previous', 'mexclusive2' ),
 		                                    ) );?>
                                         </div>
                                         <hr>
@@ -100,7 +100,7 @@ get_header(); ?>
                                                 <div class="d-flex justify-content-between border-bottom mb-4">
                                                     <ul class="nav-pills d-inline-flex text-center">
                                                         <li class="mb-3 ">
-                                                            <h5 class="mt-2 me-3 mb-0"><?php _e('Tags', 'mexclusive2') ?>:</h5>
+                                                            <p class="mt-2 me-3 mb-0"><?php _e('Tags', 'mexclusive2') ?>:</p>
                                                         </li>
 					                                    <?php
 					                                    // Get tags for current post

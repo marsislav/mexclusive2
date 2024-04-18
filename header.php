@@ -116,7 +116,7 @@ function display_last_post_in_random_categories() {
                         <div class="row align-items-center">
                             <div class="col-1 text-white">
                                 <i class="fa-solid fa-cloud-bolt text-white"></i>
-	                            <?php _e( 'Newest:', 'mexclusive2' ); ?>
+	                            <?php _e( 'Ново:', 'mexclusive2' ); ?>
                             </div>
                             <div class="col-11">
                                 <div class="scrolling-wrapper">
@@ -166,7 +166,7 @@ function display_last_post_in_random_categories() {
 
                         </div>
                     </div>
-                    <div class="col-8 d-md-flex justify-content-center">
+                    <div class="col-12 col-md-8 d-md-flex justify-content-center">
 
 
                         <nav class="navbar navbar-expand-md navbar-light main-menu" role="navigation">
@@ -203,11 +203,11 @@ function display_last_post_in_random_categories() {
 							<?php if ( is_user_logged_in() ) { ?>
 
 
-                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>" title="<?php _e( 'My Account', 'mexclusive2' ); ?>">
+                                <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>" title="<?php _e( 'My account', 'mexclusive2' ); ?>">
                                     <i class="fa-solid fa-user"></i>
                                     </a>
 
-                                <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>" title="<?php _e( 'Logout', 'mexclusive2' ); ?>">
+                                <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>" title="<?php _e( 'Exit', 'mexclusive2' ); ?>">
                                     <i class="fa-solid fa-door-open"></i>
                                     </a>
 							<?php } else { ?>

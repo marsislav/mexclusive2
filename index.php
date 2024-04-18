@@ -13,130 +13,14 @@
  */
 
 get_header(); ?>
+
     <div class="content-area">
         <main>
-            <section class="slider">
-
-                <div id="mainSlider" class="carousel slide mb-5" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-						<?php
-						// Loop through each slider page
-						for ( $i = 1; $i <= 3; $i ++ ) {
-							// Get slider page settings
-							$page_id     = get_theme_mod( 'set_slider_page' . $i );
-							$button_text = get_theme_mod( 'set_slider_button_text' . $i );
-							$button_url  = get_theme_mod( 'set_slider_url' . $i );
-
-							// Output carousel item
-							$active_class = $i === 1 ? 'active' : ''; // Add 'active' class to the first item
-							?>
-                            <div class="carousel-item <?php echo $active_class; ?>">
-								<?php if ( $page_id ) : ?>
-
-									<?php echo get_the_post_thumbnail( $page_id, 'large', array(
-										'class' => 'd-block w-100',
-										'alt'   => get_the_title( $page_id )
-									) ); ?>
-
-									<?php if ( $button_text && $button_url ) : ?>
-                                        <div class="carousel-caption">
-                                            <h5><?php echo esc_html( get_the_title( $page_id ) ); ?></h5>
-                                            <p><?php echo esc_html( get_the_excerpt( $page_id ) ); ?></p>
-                                            <a href="<?php echo esc_url( $button_url ); ?>"
-                                               class="btn btn-primary mt-md-5"><?php echo esc_html( $button_text ); ?></a>
-                                        </div>
-									<?php endif; ?>
-								<?php endif; ?>
-                            </div>
-						<?php } ?>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider"
-                            data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"><?php _e( 'Previous', 'mexclusive2' ); ?></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#mainSlider"
-                            data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"><?php _e( 'Next', 'mexclusive2' ); ?></span>
-                    </button>
-                </div>
-            </section>
-			<?php if ( class_exists( 'WooCommerce' ) ): ?>
-				<?php
-				$showdeal = get_theme_mod( 'set_deal_show', 0 );
-				$deal     = get_theme_mod( 'set_deal' );
-				$currency = get_woocommerce_currency_symbol();
-				$regular  = get_post_meta( $deal, '_regular_price', 'true' );
-				$sale     = get_post_meta( $deal, '_sale_price', 'true' );
-
-				if ( $showdeal == 1 && ( ! empty( $deal ) ) ) :
-					$discount_percentage = absint( 100 - ( $sale / $regular ) * 100 );
-					?>
-                    <section class="deal-of-the-week mb-5" id="primary">
-                        <div class="container">
-
-                            <div class="row d-flex align-items-center">
-
-                                <div class="deal-img col-md-6 col-12 ms-auto text-center">
-									<?php
-									echo get_the_post_thumbnail( $deal, 'large', array( 'class' => 'img-fluid rounded' ) );
-									?>
-                                </div>
-                                <div class="deal-desc col-md-4 col-12 me-auto text-center">
-                                    <h2><?php _e( 'Deal of the week', 'mexclusive2' ); ?></h2>
-									<?php if ( ! empty( $sale ) ): ?>
-                                        <span class="discount">
-
-                                <?php echo '- ' . $discount_percentage . '%'; ?>
-                            </span>
-									<?php endif; ?>
-                                    <h3>
-                                        <a href="<?php echo get_permalink( 'deal' ); ?>"><?php echo get_the_title( 'deal' ); ?></a>
-                                    </h3>
-                                    <p>
-										<?php echo get_the_excerpt( $deal ); ?>
-                                    </p>
-                                    <div class="prices">
-                                <span class="regular">
-                                </span>
-										<?php if ( ! empty( $sale ) ): ?>
-                                            <span class="sale">
-                                        <?php echo $sale . ' ' . $currency; ?>
-                                    </span>
-										<?php endif; ?>
-                                    </div>
-                                    <a href="<?php echo esc_url( '?add-to-cart=' . $deal ); ?>"
-                                       class="btn btn-primary"><?php _e( 'Add to cart', 'mexclusive2' ); ?></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-				<?php endif; ?>
+            
+			
 
 
-                <section class="popular-products">
-                    <div class="container">
-						<?php
-						$popular_limit  = get_theme_mod( 'set_popular_max_num', 4 );
-						$popular_col    = get_theme_mod( 'set_popular_max_col', 4 );
-						$arrivals_limit = get_theme_mod( 'set_new_arrivals_max_num', 4 );
-						$arrivals_col   = get_theme_mod( 'set_new_arrivals_max_col', 4 );
-
-						?>
-
-                        <h2><?php _e('Popular Products', 'mexclusive2');?></h2>
-						<?php echo do_shortcode( '[products limit=" ' . $popular_limit . ' " columns="' . $popular_col . '" orderby="popularity"]' ); ?>
-                    </div>
-                </section>
-                <section class="new-arrivals">
-                    <div class="container">
-                        <h2><?php _e('New Arrivals', 'mexclusive2');?></h2>
-						<?php echo do_shortcode( '[products limit="' . $arrivals_limit . '" columns="' . $arrivals_col . '" orderby="date"]' ); ?>
-                    </div>
-                </section>
-			<?php endif; ?>
+              
             <section class="blog">
                 <div class="container">
                     <div class="row">

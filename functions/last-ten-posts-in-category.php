@@ -34,9 +34,9 @@ echo '<ul class="last-ten-posts">';
 // Restore original post data
 wp_reset_postdata();
 } else {
-echo esc_html__('No posts found in this category.', 'mexclusive2');
+echo esc_html__('There is no posts.', 'mexclusive2');
 }
 } else {
-echo esc_html__('This post does not have any categories.', 'mexclusive2');
+echo esc_html__('This post doesnt have category .', 'mexclusive2');
 }
 }

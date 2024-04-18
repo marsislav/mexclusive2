@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div>
-					<?php echo wp_kses_post(get_theme_mod('set_copyright', __('Copyright - X. All rights reserved.', 'mexclusive2'))); ?>
+					<?php echo wp_kses_post(get_theme_mod('set_copyright', __('Copyright - Marsislav. All rights reserved.', 'mexclusive2'))); ?>
                 </div>
 	            <?php
 	            $show_footer_menu = get_theme_mod('set_footer_menu_show', 0);

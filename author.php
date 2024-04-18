@@ -19,7 +19,7 @@
     </div>
     <div class="row py-5">
         <div class="col-12">
-            <h3><?php _e('Here you can find all posts by the author:', 'mexclusive2');?></h3>
+            <h3><?php _e('Here you can see all posts by this author:', 'mexclusive2');?></h3>
         </div>
     </div>
 
@@ -67,15 +67,15 @@
                     <?php
                         $views = mexclusive2_display_post_views();
                         printf(
-                            _n('%d View', '%d Views', $views, 'mexclusive2'),
+                            _n('%d преглед', '%d прегледа', $views, 'mexclusive2'),
                             $views );
                     ?>
                     <a href="<?php the_permalink();?>#comments" class="text-dark link-hover me-3">
                         <?php 
                             printf(
                                 _n(
-                                    '%s Comment',
-                                    '%s Comments',
+                                    '%s comment',
+                                    '%s comments',
                                     get_comments_number(),
                                     'mexclusive2'
                                 ),
@@ -94,7 +94,7 @@
         wp_reset_postdata();
     else :
         // No posts found
-        echo esc_html__('No posts found by this author.', 'mexclusive2');
+        echo esc_html__('No publications found by this author.', 'mexclusive2');
     endif;
     ?>
 

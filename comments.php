@@ -12,20 +12,20 @@ $discussion = mexclusive2_get_discussion_data();
 				<?php
 				if ( comments_open() ) {
 					if ( have_comments() ) {
-						_e( 'Join the Conversation', 'mexclusive2' );
+						_e( 'Join the discussion', 'mexclusive2' );
 					} else {
 						_e( 'Leave a comment', 'mexclusive2' );
 					}
 				} else {
 					if ( '1' == $discussion->responses ) {
 						/* translators: %s: Post title. */
-						printf( _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'mexclusive2' ), get_the_title() );
+						printf( _x( 'One answer to &ldquo;%s&rdquo;', 'comments title', 'mexclusive2' ), get_the_title() );
 					} else {
 						printf(
 						/* translators: 1: Number of comments, 2: Post title. */
 							_nx(
-								'%1$s reply on &ldquo;%2$s&rdquo;',
-								'%1$s replies on &ldquo;%2$s&rdquo;',
+								'%1$s answer to  &ldquo;%2$s&rdquo;',
+								'%1$s answers to &ldquo;%2$s&rdquo;',
 								$discussion->responses,
 								'comments title',
 								'mexclusive2'

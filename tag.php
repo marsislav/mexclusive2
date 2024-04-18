@@ -3,7 +3,7 @@
 <div class="container py-5" id="primary">
     <div class="row">
         <div class="col-12">
-            <h1><?php printf(esc_html__('All posts with tag: %s', 'mexclusive2'), single_tag_title('', false)); ?></h1>
+            <h1><?php printf(esc_html__('There is no posts with tag: %s', 'mexclusive2'), single_tag_title('', false)); ?></h1>
         </div>
     </div>
     
@@ -52,7 +52,7 @@
                         <?php
                         $views = mexclusive2_display_post_views();
                         printf(
-                            _n('%d View', '%d Views', $views, 'mexclusive2'),
+                            _n('%d view', '%d views', $views, 'mexclusive2'),
                             $views
                         );
                         ?>
@@ -60,8 +60,8 @@
                             <?php
                             printf(
                                 _n(
-                                    '%s Comment',
-                                    '%s Comments',
+                                    '%s comment',
+                                    '%s comments',
                                     get_comments_number(),
                                     'mexclusive2'
                                 ),
@@ -98,7 +98,7 @@
     <?php else : ?>
         <div class="row py-5">
             <div class="col-12">
-                <p><?php esc_html_e('No posts found with this tag.', 'mexclusive2'); ?></p>
+                <p><?php esc_html_e('There is no posts with this tag.', 'mexclusive2'); ?></p>
             </div>
         </div>
     <?php endif; ?>

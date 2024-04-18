@@ -27,7 +27,7 @@ get_header(); ?>
                             <?php
                             endwhile;
                         else :?>
-                            <p>Nothing found</p>
+                            <p><?php _e('Nothing found', 'mexclusive2');?></p>
                         <?php endif;
                         ?>
                     </div>

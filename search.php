@@ -2,7 +2,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-12" id="primary">
-            <h1><?php printf(esc_html__('Search results for: %s', 'mexclusive2'), get_search_query());?> </h1>
+            <h1><?php printf(esc_html__('Results for: %s', 'mexclusive2'), get_search_query());?> </h1>
         </div>
     </div>
     
@@ -38,15 +38,15 @@
                     <?php
                         $views = mexclusive2_display_post_views();
                         printf(
-                            _n('%d View', '%d Views', $views, 'mexclusive2'),
+                            _n('%d view', '%d views', $views, 'mexclusive2'),
                             $views );
                     ?>
                     <a href="<?php the_permalink();?>#comments" class="text-dark link-hover me-3">
                         <?php 
                             printf(
                                 _n(
-                                    '%s Comment',
-                                    '%s Comments',
+                                    '%s comment',
+                                    '%s comments',
                                     get_comments_number(),
                                     'mexclusive2'
                                 ),
@@ -72,7 +72,7 @@
     <?php else : ?>
         <div class="row py-5">
             <div class="col-12">
-                 <p><?php esc_html_e('Sorry, no results were found.', 'mexclusive2'); ?></p>
+                 <p><?php esc_html_e('Nothing found.', 'mexclusive2'); ?></p>
             </div>
         </div>
        

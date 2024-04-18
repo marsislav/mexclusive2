@@ -1,7 +1,7 @@
 <div class="tab-content author-info">
 	<div id="tab-1" class="tab-pane fade show active">
 		<h2 class="screen-reader-text">
-			<?php esc_attr_e('About the author', 'mexclusive2'); ?>
+			<?php esc_attr_e('За автора', 'mexclusive2'); ?>
 		</h2>
 
 		<?php
@@ -18,12 +18,12 @@
 			<div class="col-3">
 				<?php echo get_avatar($author_id, '');?>
 			</div>
-			<div class="col-9">
+			<div class="col-9 text-end text-md-start">
 				<?php if ($author_website) { ?>
 					<a href="<?php echo esc_url($author_website);?>" target="_blank"><h3><?php echo $author_display; ?></h3></a>
 				<?php } else { ?> <h3><?php echo $author_display; ?></h3> <?php }?>
 				<div class="author_posts">
-					<a href="<?php echo esc_url($author_posts_url);?>"><?php printf(esc_html(_n('%s post', '%s posts', $author_posts, 'mexclusive2')), number_format_i18n($author_posts));?></a>
+					<a href="<?php echo esc_url($author_posts_url);?>"><?php printf(esc_html(_n('%s статия', '%s статии', $author_posts, 'mexclusive2')), number_format_i18n($author_posts));?></a>
 				</div>
 				<p class="mb-0"><?php echo esc_html( $author_description);?>
 				</p>
